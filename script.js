@@ -2,20 +2,45 @@ document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("leadForm");
   const success = document.getElementById("success");
 
-  form.addEventListener("submit", (event) => {
-    event.preventDefault();
+  form.addEventListener("submit", async (event) => {
+  event.preventDefault();
 
-    if (!form.checkValidity()) {
-      form.reportValidity();
-      return;
+  if (!form.checkValidity()) {
+    form.reportValidity();
+    return;
+  }
+
+  const button = form.querySelector('button[type="submit"]');
+  const originalText = button.innerHTML;
+
+  button.disabled = true;
+  button.innerHTML = "Sending…";
+
+  try {
+    const response = await fetch(form.action, {
+      method: "POST",
+      body: new FormData(form),
+      headers: {
+        Accept: "application/json"
+      }
+    });
+
+    const result = await response.json();
+
+    if (response.ok && result.success) {
+      form.hidden = true;
+      success.hidden = false;
+      success.scrollIntoView({ behavior: "smooth", block: "center" });
+      form.reset();
+    } else {
+      throw new Error(result.message || "Submission failed");
     }
-
-    // PLACEHOLDER: Replace this handler with your live form endpoint.
-    // No email/backend service is implied by this demo implementation.
-    form.hidden = true;
-    success.hidden = false;
-    success.scrollIntoView({ behavior: "smooth", block: "center" });
-  });
+  } catch (error) {
+    alert("Something went wrong. Please try again.");
+    button.disabled = false;
+    button.innerHTML = originalText;
+  }
+});
 
   document.querySelectorAll('a[href^="#"]').forEach((link) => {
     link.addEventListener("click", () => {
