@@ -4,47 +4,46 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Metrivio — Sample Marketing Efficiency Diagnostic</title>
+  <title>Metrivio — Marketing Efficiency Diagnostic</title>
 
   <meta
     name="description"
-    content="Illustrative Metrivio marketing efficiency diagnostic showing how media, ecommerce and customer economics become clearer allocation decisions."
+    content="Illustrative Metrivio marketing efficiency diagnostic for a DTC ecommerce business."
   >
 
   <style>
+
     :root {
       --bg: #f7f7f5;
-      --surface: #ffffff;
-      --surface-soft: #fafafa;
-      --surface-dark: #111111;
+      --white: #ffffff;
+      --black: #111111;
+      --text: #191919;
+      --text-soft: #363636;
+      --muted: #6f6f6f;
+      --muted-light: #969696;
 
-      --ink: #171717;
-      --ink-soft: #333333;
-      --muted: #6b6b6b;
-      --muted-light: #8a8a8a;
+      --border: #e5e5e1;
+      --border-dark: #d7d7d1;
 
-      --line: #e6e6e3;
-      --line-dark: #d7d7d2;
+      --green: #176b43;
+      --green-bg: #eef7f1;
+      --green-border: #c9e4d3;
 
-      --green: #157347;
-      --green-soft: #edf7f1;
-      --green-line: #c9e6d5;
+      --red: #a9251b;
+      --red-bg: #fff2f0;
+      --red-border: #efc9c4;
 
-      --red: #b42318;
-      --red-soft: #fff1f0;
-      --red-line: #f3c4c0;
+      --amber: #946000;
+      --amber-bg: #fff8e8;
+      --amber-border: #ecdca8;
 
-      --amber: #9a5b00;
-      --amber-soft: #fff8e8;
-      --amber-line: #ecd99e;
+      --blue: #315d91;
+      --blue-bg: #f1f5fa;
+      --blue-border: #d2ddeb;
 
-      --blue: #285ea8;
-      --blue-soft: #f0f5fb;
-      --blue-line: #cddbed;
-
-      --max: 1120px;
-      --radius: 12px;
-      --shadow: 0 8px 28px rgba(0, 0, 0, 0.035);
+      --max-width: 1120px;
+      --radius: 11px;
+      --shadow: 0 7px 25px rgba(0,0,0,0.035);
     }
 
     * {
@@ -59,10 +58,9 @@
 
     body {
       background: var(--bg);
-      color: var(--ink);
+      color: var(--text);
       font-family:
         Inter,
-        ui-sans-serif,
         -apple-system,
         BlinkMacSystemFont,
         "Segoe UI",
@@ -81,21 +79,22 @@
     }
 
     .container {
-      width: min(calc(100% - 40px), var(--max));
+      width: min(calc(100% - 40px), var(--max-width));
       margin: 0 auto;
     }
 
-    /* =========================
+
+    /* ==========================================
        NAV
-    ========================== */
+    ========================================== */
 
     .topbar {
       height: 68px;
-      background: rgba(247, 247, 245, 0.96);
-      border-bottom: 1px solid var(--line);
       position: sticky;
       top: 0;
       z-index: 100;
+      background: rgba(247,247,245,0.96);
+      border-bottom: 1px solid var(--border);
       backdrop-filter: blur(10px);
     }
 
@@ -118,11 +117,11 @@
     .brand-mark {
       width: 25px;
       height: 25px;
-      border-radius: 6px;
       display: grid;
       place-items: center;
-      background: #111;
-      color: #fff;
+      border-radius: 6px;
+      background: var(--black);
+      color: white;
       font-size: 11px;
       font-weight: 800;
     }
@@ -136,20 +135,21 @@
     }
 
     .nav a:hover {
-      color: var(--ink);
+      color: var(--black);
     }
 
-    .nav-button {
+    .nav-cta {
       padding: 9px 14px;
       border-radius: 7px;
-      background: #111;
-      color: #fff !important;
+      background: var(--black);
+      color: white !important;
       font-weight: 650;
     }
 
-    /* =========================
+
+    /* ==========================================
        HEADER
-    ========================== */
+    ========================================== */
 
     .report-header {
       padding: 68px 0 42px;
@@ -160,6 +160,7 @@
       align-items: center;
       gap: 8px;
       margin-bottom: 15px;
+
       color: var(--muted);
       font-size: 10px;
       font-weight: 750;
@@ -176,8 +177,9 @@
     }
 
     h1 {
-      max-width: 820px;
+      max-width: 850px;
       margin-bottom: 18px;
+
       font-size: clamp(40px, 5vw, 60px);
       line-height: 1.02;
       letter-spacing: -0.055em;
@@ -185,7 +187,7 @@
     }
 
     .header-copy {
-      max-width: 750px;
+      max-width: 780px;
       color: var(--muted);
       font-size: 17px;
       line-height: 1.7;
@@ -194,14 +196,17 @@
     .notice {
       display: flex;
       flex-wrap: wrap;
-      gap: 10px 18px;
       align-items: center;
+      gap: 10px 18px;
+
       margin-top: 28px;
       padding: 12px 15px;
-      border: 1px solid var(--amber-line);
+
+      border: 1px solid var(--amber-border);
       border-radius: 8px;
-      background: var(--amber-soft);
-      color: #765000;
+      background: var(--amber-bg);
+
+      color: #735000;
       font-size: 11px;
     }
 
@@ -219,24 +224,25 @@
 
     .meta span {
       padding: 6px 10px;
-      border: 1px solid var(--line);
+      border: 1px solid var(--border);
       border-radius: 999px;
-      background: #fff;
+      background: white;
       color: var(--muted);
       font-size: 11px;
     }
 
-    /* =========================
-       SECTIONS
-    ========================== */
+
+    /* ==========================================
+       GENERIC SECTIONS
+    ========================================== */
 
     section {
       margin-bottom: 22px;
     }
 
     .card {
-      background: var(--surface);
-      border: 1px solid var(--line);
+      background: var(--white);
+      border: 1px solid var(--border);
       border-radius: var(--radius);
       box-shadow: var(--shadow);
     }
@@ -247,6 +253,7 @@
 
     .section-label {
       margin-bottom: 8px;
+
       color: var(--muted);
       font-size: 10px;
       font-weight: 750;
@@ -256,24 +263,26 @@
 
     h2 {
       margin-bottom: 9px;
+
       font-size: 27px;
       line-height: 1.16;
       letter-spacing: -0.035em;
     }
 
     .intro {
-      max-width: 770px;
+      max-width: 800px;
       color: var(--muted);
       font-size: 14px;
     }
 
-    /* =========================
+
+    /* ==========================================
        EXECUTIVE SUMMARY
-    ========================== */
+    ========================================== */
 
     .executive-grid {
       display: grid;
-      grid-template-columns: 1.45fr 0.7fr;
+      grid-template-columns: 1.45fr .7fr;
       gap: 18px;
       margin-top: 22px;
     }
@@ -281,8 +290,8 @@
     .executive-main {
       padding: 29px;
       border-radius: 10px;
-      background: #111;
-      color: #fff;
+      background: var(--black);
+      color: white;
     }
 
     .executive-main .section-label {
@@ -306,17 +315,20 @@
       display: flex;
       flex-wrap: wrap;
       gap: 25px;
+
       margin-top: 24px;
       padding-top: 18px;
+
       border-top: 1px solid #292929;
     }
 
     .executive-meta span {
       display: block;
       margin-bottom: 3px;
+
       color: #8f8f8f;
       font-size: 9px;
-      letter-spacing: 0.08em;
+      letter-spacing: .08em;
       text-transform: uppercase;
     }
 
@@ -327,28 +339,29 @@
 
     .score {
       padding: 27px;
-      border: 1px solid var(--line);
+      border: 1px solid var(--border);
       border-radius: 10px;
-      background: var(--surface-soft);
+      background: #fafafa;
     }
 
     .score-title {
       color: var(--muted);
       font-size: 10px;
       font-weight: 750;
-      letter-spacing: 0.1em;
+      letter-spacing: .1em;
       text-transform: uppercase;
     }
 
     .score-number {
       margin-top: 10px;
+
       font-size: 60px;
       line-height: 1;
-      letter-spacing: -0.06em;
+      letter-spacing: -.06em;
       font-weight: 760;
     }
 
-    .score-out-of {
+    .score-out {
       color: var(--muted);
       font-size: 12px;
     }
@@ -356,6 +369,7 @@
     .score-bar {
       height: 6px;
       margin: 20px 0 14px;
+
       overflow: hidden;
       border-radius: 999px;
       background: #e4e4e1;
@@ -365,7 +379,6 @@
       display: block;
       width: 71%;
       height: 100%;
-      border-radius: inherit;
       background: var(--green);
     }
 
@@ -375,37 +388,39 @@
       line-height: 1.6;
     }
 
-    /* =========================
+
+    /* ==========================================
        KEY NUMBERS
-    ========================== */
+    ========================================== */
 
     .numbers {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(3,1fr);
       gap: 12px;
       margin-top: 18px;
     }
 
     .number-card {
       padding: 21px;
-      border: 1px solid var(--line);
+
+      border: 1px solid var(--border);
       border-radius: 10px;
-      background: #fff;
+      background: white;
     }
 
     .number-card.green {
-      background: var(--green-soft);
-      border-color: var(--green-line);
+      background: var(--green-bg);
+      border-color: var(--green-border);
     }
 
     .number-card.amber {
-      background: var(--amber-soft);
-      border-color: var(--amber-line);
+      background: var(--amber-bg);
+      border-color: var(--amber-border);
     }
 
     .number-card.blue {
-      background: var(--blue-soft);
-      border-color: var(--blue-line);
+      background: var(--blue-bg);
+      border-color: var(--blue-border);
     }
 
     .number-label {
@@ -418,7 +433,7 @@
     .number {
       font-size: 29px;
       line-height: 1;
-      letter-spacing: -0.04em;
+      letter-spacing: -.04em;
       font-weight: 760;
     }
 
@@ -440,36 +455,44 @@
       font-size: 11px;
     }
 
-    .executive-decision {
+
+    /* ==========================================
+       EXECUTIVE DECISION
+    ========================================== */
+
+    .decision-callout {
       margin-top: 18px;
-      padding: 18px 20px;
+      padding: 19px 20px;
+
       border-left: 3px solid var(--green);
       border-radius: 0 8px 8px 0;
-      background: var(--green-soft);
+      background: var(--green-bg);
     }
 
-    .executive-decision strong {
+    .decision-callout strong {
       display: block;
       margin-bottom: 5px;
+
       color: var(--green);
       font-size: 10px;
-      letter-spacing: 0.1em;
+      letter-spacing: .1em;
       text-transform: uppercase;
     }
 
-    .executive-decision p {
+    .decision-callout p {
       color: #24533c;
       font-size: 13px;
-      line-height: 1.6;
+      line-height: 1.65;
     }
 
-    /* =========================
-       DECISIONS
-    ========================== */
+
+    /* ==========================================
+       DECISION BOARD
+    ========================================== */
 
     .decision-grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(2,1fr);
       gap: 12px;
       margin-top: 22px;
     }
@@ -477,10 +500,12 @@
     .decision {
       position: relative;
       padding: 22px 22px 20px 25px;
+
       overflow: hidden;
-      border: 1px solid var(--line);
+
+      border: 1px solid var(--border);
       border-radius: 10px;
-      background: #fff;
+      background: white;
     }
 
     .decision::before {
@@ -512,36 +537,37 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 12px;
+
       margin-bottom: 13px;
     }
 
     .tag {
       padding: 4px 7px;
       border-radius: 5px;
+
       font-size: 9px;
       font-weight: 800;
-      letter-spacing: 0.08em;
+      letter-spacing: .08em;
     }
 
     .stop .tag {
       color: var(--red);
-      background: var(--red-soft);
+      background: var(--red-bg);
     }
 
     .fix .tag {
       color: var(--amber);
-      background: var(--amber-soft);
+      background: var(--amber-bg);
     }
 
     .scale .tag {
       color: var(--green);
-      background: var(--green-soft);
+      background: var(--green-bg);
     }
 
     .test .tag {
       color: var(--blue);
-      background: var(--blue-soft);
+      background: var(--blue-bg);
     }
 
     .confidence {
@@ -552,11 +578,10 @@
     .decision h3 {
       margin-bottom: 6px;
       font-size: 16px;
-      letter-spacing: -0.015em;
     }
 
     .decision p {
-      color: var(--muted-dark);
+      color: var(--text-soft);
       font-size: 12px;
       line-height: 1.65;
     }
@@ -564,124 +589,138 @@
     .decision-action {
       margin-top: 14px;
       padding-top: 12px;
-      border-top: 1px solid var(--line);
-      color: var(--ink-soft);
+
+      border-top: 1px solid var(--border);
+
+      color: var(--text-soft);
       font-size: 11px;
       font-weight: 700;
     }
 
-    /* =========================
-       DATA STACK
-    ========================== */
 
-    .data-stack {
+    /* ==========================================
+       DATA SOURCES
+    ========================================== */
+
+    .sources {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(4,1fr);
       gap: 10px;
       margin-top: 23px;
     }
 
-    .data-source {
+    .source {
       padding: 19px;
-      border: 1px solid var(--line);
+
+      border: 1px solid var(--border);
       border-radius: 9px;
-      background: var(--surface-soft);
+      background: #fafafa;
     }
 
     .source-number {
       color: var(--muted-light);
       font-size: 9px;
       font-weight: 750;
-      letter-spacing: 0.08em;
+      letter-spacing: .08em;
     }
 
-    .data-source h3 {
-      margin-top: 8px;
-      margin-bottom: 5px;
+    .source h3 {
+      margin: 8px 0 5px;
       font-size: 14px;
     }
 
-    .data-source p {
+    .source p {
       color: var(--muted);
       font-size: 11px;
       line-height: 1.6;
     }
 
-    .source-data {
+    .source-tags {
       display: flex;
       flex-wrap: wrap;
       gap: 5px;
       margin-top: 11px;
     }
 
-    .source-data span {
+    .source-tags span {
       padding: 4px 6px;
-      border: 1px solid var(--line);
+
+      border: 1px solid var(--border);
       border-radius: 4px;
-      background: #fff;
-      color: var(--muted-dark);
+      background: white;
+
+      color: var(--muted);
       font-size: 9px;
     }
 
-    .data-connection {
+    .source-note {
       margin-top: 15px;
       padding: 15px 17px;
-      border: 1px dashed var(--line-dark);
+
+      border: 1px dashed var(--border-dark);
       border-radius: 8px;
+
       color: var(--muted);
       font-size: 11px;
-      line-height: 1.6;
+      line-height: 1.65;
     }
 
-    .data-connection strong {
-      color: var(--ink-soft);
+    .source-note strong {
+      color: var(--text-soft);
     }
 
-    /* =========================
-       MEDIA TABLE
-    ========================== */
 
-    .table-wrapper {
+    /* ==========================================
+       CHANNEL TABLE
+    ========================================== */
+
+    .table-wrap {
       margin-top: 22px;
+
       overflow-x: auto;
-      border: 1px solid var(--line);
+
+      border: 1px solid var(--border);
       border-radius: 9px;
     }
 
     table {
       width: 100%;
-      min-width: 720px;
+      min-width: 760px;
+
       border-collapse: collapse;
+
       font-size: 12px;
     }
 
     thead {
-      background: var(--surface-soft);
+      background: #fafafa;
     }
 
     th {
       padding: 12px 14px;
-      border-bottom: 1px solid var(--line);
+
+      border-bottom: 1px solid var(--border);
+
       color: var(--muted);
       font-size: 9px;
       font-weight: 750;
-      letter-spacing: 0.08em;
+      letter-spacing: .08em;
       text-align: left;
       text-transform: uppercase;
     }
 
     td {
       padding: 13px 14px;
-      border-bottom: 1px solid var(--line);
-      color: var(--muted-dark);
+      border-bottom: 1px solid var(--border);
+      color: var(--text-soft);
     }
 
-    tr:last-child td {
+    tbody tr:last-child td {
       border-bottom: 0;
     }
 
     td:first-child {
-      color: var(--ink);
+      color: var(--text);
       font-weight: 650;
     }
 
@@ -689,34 +728,36 @@
       display: inline-block;
       padding: 4px 7px;
       border-radius: 5px;
+
       font-size: 8px;
       font-weight: 800;
-      letter-spacing: 0.05em;
+      letter-spacing: .05em;
     }
 
-    .pill-investigate {
-      color: var(--amber);
-      background: var(--amber-soft);
-    }
-
-    .pill-scale {
-      color: var(--green);
-      background: var(--green-soft);
-    }
-
-    .pill-maintain {
-      color: var(--blue);
-      background: var(--blue-soft);
-    }
-
-    .pill-test {
+    .pill-red {
       color: var(--red);
-      background: var(--red-soft);
+      background: var(--red-bg);
     }
 
-    /* =========================
-       AMAZON + SHOPIFY ANALYSIS
-    ========================== */
+    .pill-amber {
+      color: var(--amber);
+      background: var(--amber-bg);
+    }
+
+    .pill-green {
+      color: var(--green);
+      background: var(--green-bg);
+    }
+
+    .pill-blue {
+      color: var(--blue);
+      background: var(--blue-bg);
+    }
+
+
+    /* ==========================================
+       AMAZON / SHOPIFY
+    ========================================== */
 
     .commerce-grid {
       display: grid;
@@ -727,92 +768,175 @@
 
     .commerce-card {
       padding: 23px;
-      border: 1px solid var(--line);
+
+      border: 1px solid var(--border);
       border-radius: 10px;
-      background: var(--surface-soft);
+      background: #fafafa;
     }
 
-    .commerce-card-header {
+    .commerce-header {
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      gap: 15px;
+      justify-content: space-between;
+
       margin-bottom: 16px;
     }
 
-    .commerce-card-header h3 {
+    .commerce-header h3 {
       font-size: 17px;
-      letter-spacing: -0.02em;
+      letter-spacing: -.02em;
     }
 
     .commerce-badge {
       padding: 5px 7px;
-      border: 1px solid var(--line);
+
+      border: 1px solid var(--border);
       border-radius: 5px;
-      background: #fff;
+      background: white;
+
       color: var(--muted);
       font-size: 9px;
       font-weight: 750;
       text-transform: uppercase;
     }
 
-    .commerce-metric {
+    .metric-row {
       display: flex;
       align-items: baseline;
       justify-content: space-between;
       gap: 20px;
+
       padding: 10px 0;
-      border-bottom: 1px solid var(--line);
+      border-bottom: 1px solid var(--border);
     }
 
-    .commerce-metric:last-child {
+    .metric-row:last-child {
       border-bottom: 0;
     }
 
-    .commerce-metric span {
+    .metric-row span {
       color: var(--muted);
       font-size: 11px;
     }
 
-    .commerce-metric strong {
-      color: var(--ink);
+    .metric-row strong {
+      color: var(--text);
       font-size: 12px;
     }
 
-    .commerce-note {
+    .commerce-insight {
       margin-top: 15px;
       padding-top: 13px;
-      border-top: 1px solid var(--line);
+
+      border-top: 1px solid var(--border);
+
       color: var(--muted);
       font-size: 11px;
-      line-height: 1.6;
+      line-height: 1.65;
     }
 
-    /* =========================
+    .commerce-insight strong {
+      color: var(--text-soft);
+    }
+
+
+    /* ==========================================
+       OPPORTUNITY MAP
+    ========================================== */
+
+    .opportunity-table {
+      margin-top: 22px;
+    }
+
+    .opportunity {
+      display: grid;
+      grid-template-columns: 45px 1.2fr .7fr .65fr 100px;
+      gap: 15px;
+      align-items: center;
+
+      padding: 17px 0;
+
+      border-bottom: 1px solid var(--border);
+    }
+
+    .opportunity:last-child {
+      border-bottom: 0;
+    }
+
+    .priority {
+      width: 27px;
+      height: 27px;
+
+      display: grid;
+      place-items: center;
+
+      border-radius: 50%;
+
+      background: #111;
+      color: white;
+
+      font-size: 10px;
+      font-weight: 750;
+    }
+
+    .opportunity h3 {
+      margin-bottom: 3px;
+      font-size: 13px;
+    }
+
+    .opportunity p {
+      color: var(--muted);
+      font-size: 10px;
+    }
+
+    .opp-value {
+      font-size: 12px;
+      font-weight: 750;
+    }
+
+    .opp-confidence {
+      color: var(--muted);
+      font-size: 10px;
+    }
+
+    .opp-action {
+      color: var(--green);
+      font-size: 10px;
+      font-weight: 750;
+      text-align: right;
+    }
+
+
+    /* ==========================================
        FUNNEL
-    ========================== */
+    ========================================== */
 
     .funnel {
       display: grid;
-      grid-template-columns: repeat(5, 1fr);
+      grid-template-columns: repeat(5,1fr);
       gap: 8px;
       margin-top: 22px;
     }
 
     .funnel-step {
       position: relative;
+
       padding: 18px 15px;
-      border: 1px solid var(--line);
+
+      border: 1px solid var(--border);
       border-radius: 8px;
-      background: var(--surface-soft);
+      background: #fafafa;
     }
 
     .funnel-step::after {
       content: "→";
+
       position: absolute;
-      right: -10px;
       top: 50%;
+      right: -10px;
+
       transform: translateY(-50%);
+
       color: var(--muted-light);
       z-index: 2;
     }
@@ -824,10 +948,11 @@
     .funnel-step small {
       display: block;
       margin-bottom: 5px;
+
       color: var(--muted);
       font-size: 9px;
       font-weight: 700;
-      letter-spacing: 0.05em;
+      letter-spacing: .05em;
       text-transform: uppercase;
     }
 
@@ -839,26 +964,29 @@
     .funnel-step span {
       display: block;
       margin-top: 4px;
+
       color: var(--muted);
       font-size: 10px;
     }
 
-    /* =========================
+
+    /* ==========================================
        ECONOMICS
-    ========================== */
+    ========================================== */
 
     .economic-grid {
       display: grid;
-      grid-template-columns: 0.9fr 1.1fr;
+      grid-template-columns: .9fr 1.1fr;
       gap: 14px;
       margin-top: 22px;
     }
 
     .economic-callout {
       padding: 25px;
+
       border-radius: 10px;
       background: #111;
-      color: #fff;
+      color: white;
     }
 
     .economic-callout .section-label {
@@ -867,9 +995,10 @@
 
     .economic-number {
       margin: 7px 0 10px;
+
       font-size: 46px;
       line-height: 1;
-      letter-spacing: -0.055em;
+      letter-spacing: -.055em;
       font-weight: 760;
     }
 
@@ -881,7 +1010,8 @@
 
     .economic-list {
       overflow: hidden;
-      border: 1px solid var(--line);
+
+      border: 1px solid var(--border);
       border-radius: 10px;
     }
 
@@ -889,8 +1019,10 @@
       display: grid;
       grid-template-columns: 1fr auto;
       gap: 20px;
+
       padding: 16px 19px;
-      border-bottom: 1px solid var(--line);
+
+      border-bottom: 1px solid var(--border);
     }
 
     .economic-row:last-child {
@@ -913,71 +1045,172 @@
       white-space: nowrap;
     }
 
-    /* =========================
-       ACTION PLAN
-    ========================== */
 
-    .action-list {
+    /* ==========================================
+       NEXT 30 DAYS
+    ========================================== */
+
+    .roadmap {
       margin-top: 22px;
-      border-top: 1px solid var(--line);
+      border-top: 1px solid var(--border);
     }
 
-    .action {
+    .roadmap-row {
       display: grid;
-      grid-template-columns: 50px 1fr 145px;
+      grid-template-columns: 65px 1fr 130px 150px;
       gap: 18px;
+      align-items: start;
+
       padding: 19px 0;
-      border-bottom: 1px solid var(--line);
+
+      border-bottom: 1px solid var(--border);
     }
 
-    .action-number {
+    .roadmap-number {
       color: var(--muted);
       font-size: 10px;
       font-weight: 750;
-      letter-spacing: 0.06em;
+      letter-spacing: .06em;
     }
 
-    .action h3 {
-      margin-bottom: 3px;
+    .roadmap h3 {
+      margin-bottom: 4px;
       font-size: 14px;
     }
 
-    .action p {
+    .roadmap p {
       color: var(--muted);
       font-size: 11px;
       line-height: 1.6;
     }
 
-    .action-outcome {
-      color: var(--muted-dark);
+    .roadmap-owner,
+    .roadmap-outcome {
+      color: var(--text-soft);
       font-size: 10px;
-      font-weight: 700;
-      text-align: right;
+      font-weight: 650;
     }
 
-    /* =========================
+    .roadmap-owner span,
+    .roadmap-outcome span {
+      display: block;
+      margin-bottom: 3px;
+
+      color: var(--muted-light);
+      font-size: 8px;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+    }
+
+
+    /* ==========================================
+       MEASUREMENT
+    ========================================== */
+
+    .measurement-grid {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 11px;
+      margin-top: 22px;
+    }
+
+    .measurement {
+      padding: 19px;
+
+      border: 1px solid var(--border);
+      border-radius: 9px;
+      background: #fafafa;
+    }
+
+    .measurement-number {
+      color: var(--muted-light);
+      font-size: 9px;
+      font-weight: 750;
+      letter-spacing: .08em;
+    }
+
+    .measurement h3 {
+      margin: 7px 0 5px;
+      font-size: 13px;
+    }
+
+    .measurement p {
+      color: var(--muted);
+      font-size: 10px;
+      line-height: 1.6;
+    }
+
+
+    /* ==========================================
+       CONFIDENCE / EVIDENCE
+    ========================================== */
+
+    .evidence-box {
+      margin-top: 18px;
+      padding: 19px 20px;
+
+      border: 1px solid var(--border);
+      border-radius: 9px;
+      background: #fafafa;
+    }
+
+    .evidence-box h3 {
+      margin-bottom: 10px;
+      font-size: 12px;
+    }
+
+    .evidence-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .evidence-item {
+      padding: 12px;
+
+      border: 1px solid var(--border);
+      border-radius: 7px;
+      background: white;
+    }
+
+    .evidence-item strong {
+      display: block;
+      margin-bottom: 3px;
+
+      font-size: 10px;
+    }
+
+    .evidence-item p {
+      color: var(--muted);
+      font-size: 10px;
+      line-height: 1.55;
+    }
+
+
+    /* ==========================================
        METHODOLOGY
-    ========================== */
+    ========================================== */
 
     .method-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(3,1fr);
       gap: 11px;
       margin-top: 22px;
     }
 
     .method {
       padding: 19px;
-      border: 1px solid var(--line);
+
+      border: 1px solid var(--border);
       border-radius: 9px;
-      background: var(--surface-soft);
+      background: #fafafa;
     }
 
     .method-number {
       color: var(--muted-light);
       font-size: 9px;
       font-weight: 750;
-      letter-spacing: 0.08em;
+      letter-spacing: .08em;
     }
 
     .method h3 {
@@ -994,7 +1227,8 @@
     .limitation {
       margin-top: 18px;
       padding: 16px 18px;
-      border: 1px solid var(--line);
+
+      border: 1px solid var(--border);
       border-radius: 8px;
       background: #fafafa;
     }
@@ -1002,8 +1236,9 @@
     .limitation strong {
       display: block;
       margin-bottom: 4px;
+
       font-size: 9px;
-      letter-spacing: 0.08em;
+      letter-spacing: .08em;
       text-transform: uppercase;
     }
 
@@ -1013,20 +1248,23 @@
       line-height: 1.6;
     }
 
-    /* =========================
+
+    /* ==========================================
        CTA
-    ========================== */
+    ========================================== */
 
     .cta {
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 30px;
+
       margin: 28px 0 65px;
       padding: 40px;
+
       border-radius: 12px;
       background: #111;
-      color: #fff;
+      color: white;
     }
 
     .cta .section-label {
@@ -1040,6 +1278,7 @@
 
     .cta p {
       max-width: 650px;
+
       color: #ccc;
       font-size: 12px;
       line-height: 1.65;
@@ -1047,22 +1286,28 @@
 
     .cta-button {
       flex-shrink: 0;
+
       padding: 11px 16px;
       border-radius: 7px;
-      background: #fff;
+
+      background: white;
       color: #111;
+
       font-size: 12px;
       font-weight: 750;
       white-space: nowrap;
     }
 
-    /* =========================
+
+    /* ==========================================
        FOOTER
-    ========================== */
+    ========================================== */
 
     footer {
       padding: 24px 0 38px;
-      border-top: 1px solid var(--line);
+
+      border-top: 1px solid var(--border);
+
       color: var(--muted);
       font-size: 10px;
     }
@@ -1074,9 +1319,10 @@
       gap: 15px;
     }
 
-    /* =========================
+
+    /* ==========================================
        RESPONSIVE
-    ========================== */
+    ========================================== */
 
     @media (max-width: 900px) {
 
@@ -1085,8 +1331,8 @@
         grid-template-columns: 1fr;
       }
 
-      .data-stack {
-        grid-template-columns: repeat(2, 1fr);
+      .sources {
+        grid-template-columns: repeat(2,1fr);
       }
 
       .commerce-grid {
@@ -1101,8 +1347,28 @@
         display: none;
       }
 
+      .measurement-grid,
       .method-grid {
         grid-template-columns: 1fr;
+      }
+
+      .roadmap-row {
+        grid-template-columns: 55px 1fr;
+      }
+
+      .roadmap-owner,
+      .roadmap-outcome {
+        display: none;
+      }
+
+      .opportunity {
+        grid-template-columns: 40px 1fr;
+      }
+
+      .opp-value,
+      .opp-confidence,
+      .opp-action {
+        display: none;
       }
 
       .cta {
@@ -1111,17 +1377,18 @@
       }
     }
 
+
     @media (max-width: 700px) {
 
       .container {
-        width: min(calc(100% - 26px), var(--max));
+        width: min(calc(100% - 26px), var(--max-width));
       }
 
       .topbar {
         height: 60px;
       }
 
-      .nav a:not(.nav-button) {
+      .nav a:not(.nav-cta) {
         display: none;
       }
 
@@ -1149,16 +1416,9 @@
 
       .numbers,
       .decision-grid,
-      .data-stack {
+      .sources,
+      .evidence-grid {
         grid-template-columns: 1fr;
-      }
-
-      .action {
-        grid-template-columns: 42px 1fr;
-      }
-
-      .action-outcome {
-        display: none;
       }
 
       .cta {
@@ -1171,10 +1431,11 @@
       }
     }
 
+
     @media print {
 
       body {
-        background: #fff;
+        background: white;
       }
 
       .topbar {
@@ -1190,31 +1451,53 @@
         break-inside: avoid;
       }
     }
+
   </style>
 </head>
 
+
 <body>
 
-  <!-- =========================
+
+  <!-- ==========================================
        NAVIGATION
-  ========================== -->
+  ========================================== -->
 
   <header class="topbar">
 
     <div class="container topbar-inner">
 
       <a href="index.html" class="brand">
-        <span class="brand-mark">M</span>
-        <span>METRIVIO</span>
+
+        <span class="brand-mark">
+          M
+        </span>
+
+        <span>
+          METRIVIO
+        </span>
+
       </a>
 
+
       <nav class="nav">
-        <a href="index.html">Diagnostic</a>
-        <a href="index.html#method">Method</a>
-        <a href="index.html#who">Who it's for</a>
-        <a href="index.html#review" class="nav-button">
+
+        <a href="index.html">
+          Diagnostic
+        </a>
+
+        <a href="index.html#method">
+          Method
+        </a>
+
+        <a href="index.html#who">
+          Who it's for
+        </a>
+
+        <a href="index.html#review" class="nav-cta">
           Get your review →
         </a>
+
       </nav>
 
     </div>
@@ -1222,13 +1505,15 @@
   </header>
 
 
+
   <main>
 
     <div class="container">
 
-      <!-- =========================
+
+      <!-- ==========================================
            HEADER
-      ========================== -->
+      ========================================== -->
 
       <header class="report-header">
 
@@ -1236,36 +1521,61 @@
           Marketing Efficiency Diagnostic
         </div>
 
+
         <h1>
           Performance &amp; opportunity.
         </h1>
 
+
         <p class="header-copy">
+
           An illustrative example of how Metrivio connects paid media,
           ecommerce performance, funnel behaviour and customer economics
-          to determine what to stop, fix, scale and test.
+          to determine exactly what deserves attention next.
+
         </p>
 
+
         <div class="notice">
-          <strong>ILLUSTRATIVE EXAMPLE — NOT CLIENT DATA</strong>
+
+          <strong>
+            ILLUSTRATIVE EXAMPLE — NOT CLIENT DATA
+          </strong>
+
           <span>
             All company names, figures and findings shown here are hypothetical.
           </span>
+
         </div>
 
+
         <div class="meta">
-          <span>Example DTC Brand</span>
-          <span>$150k monthly acquisition spend</span>
-          <span>90-day diagnostic</span>
-          <span>Meta · Google · Amazon · Shopify</span>
+
+          <span>
+            Example DTC Brand
+          </span>
+
+          <span>
+            $150k monthly acquisition spend
+          </span>
+
+          <span>
+            90-day diagnostic
+          </span>
+
+          <span>
+            Meta · Google · Amazon · Shopify
+          </span>
+
         </div>
 
       </header>
 
 
-      <!-- =========================
+
+      <!-- ==========================================
            01 EXECUTIVE SUMMARY
-      ========================== -->
+      ========================================== -->
 
       <section class="card">
 
@@ -1275,7 +1585,9 @@
             01 / Executive summary
           </div>
 
+
           <div class="executive-grid">
+
 
             <div class="executive-main">
 
@@ -1283,33 +1595,62 @@
                 Primary finding
               </div>
 
+
               <h2>
-                The account is generating growth — but allocation can be improved.
+                The account is generating growth — but the next dollar is not being allocated efficiently.
               </h2>
 
+
               <p>
-                Performance deterioration is concentrated in a small number of
-                prospecting campaigns. The evidence suggests the issue is not
-                simply media efficiency. Funnel conversion, marketplace performance
-                and audience quality should also be investigated before making
-                major budget cuts.
+
+                Performance deterioration is concentrated in a small number
+                of prospecting campaigns. The evidence suggests the problem
+                cannot be explained by media alone. Funnel conversion,
+                audience quality and the relationship between paid media,
+                Shopify and Amazon should be investigated before making
+                broad budget cuts.
+
               </p>
+
 
               <div class="executive-meta">
 
                 <div>
-                  <span>Acquisition spend</span>
-                  <strong>$150k / month</strong>
+
+                  <span>
+                    Acquisition spend
+                  </span>
+
+                  <strong>
+                    $150k / month
+                  </strong>
+
                 </div>
 
-                <div>
-                  <span>Diagnostic period</span>
-                  <strong>90 days</strong>
-                </div>
 
                 <div>
-                  <span>Priority</span>
-                  <strong>Allocation efficiency</strong>
+
+                  <span>
+                    Diagnostic period
+                  </span>
+
+                  <strong>
+                    90 days
+                  </strong>
+
+                </div>
+
+
+                <div>
+
+                  <span>
+                    Primary decision
+                  </span>
+
+                  <strong>
+                    Reallocate marginal spend
+                  </strong>
+
                 </div>
 
               </div>
@@ -1327,7 +1668,7 @@
                 71
               </div>
 
-              <div class="score-out-of">
+              <div class="score-out">
                 out of 100
               </div>
 
@@ -1336,8 +1677,10 @@
               </div>
 
               <p>
-                Illustrative composite assessment based on media efficiency,
-                funnel conversion and economic signals.
+
+                Illustrative composite assessment across media,
+                funnel and economic signals.
+
               </p>
 
             </div>
@@ -1345,7 +1688,9 @@
           </div>
 
 
+
           <div class="numbers">
+
 
             <div class="number-card amber">
 
@@ -1384,7 +1729,7 @@
             <div class="number-card blue">
 
               <div class="number-label">
-                Recommended reallocation
+                Initial reallocation
               </div>
 
               <div class="number">
@@ -1392,7 +1737,7 @@
               </div>
 
               <div class="number-note">
-                Controlled initial move
+                Controlled budget move
               </div>
 
             </div>
@@ -1400,18 +1745,21 @@
           </div>
 
 
-          <div class="executive-decision">
+
+          <div class="decision-callout">
 
             <strong>
               Executive decision
             </strong>
 
             <p>
-              Do not simply cut prospecting spend. First isolate deteriorating
-              campaigns, validate landing-page and audience-quality effects,
-              understand the role of Amazon and Shopify in the customer journey,
-              then move a controlled portion of marginal budget toward stronger
-              opportunities.
+
+              Do not increase total acquisition investment yet.
+              First move approximately $10k of marginal monthly spend
+              away from deteriorating activity, validate the downstream
+              conversion issue, and redeploy the budget into stronger
+              opportunities under a controlled measurement plan.
+
             </p>
 
           </div>
@@ -1421,120 +1769,186 @@
       </section>
 
 
-      <!-- =========================
-           02 DECISIONS
-      ========================== -->
+
+      <!-- ==========================================
+           02 DECISION BOARD
+      ========================================== -->
 
       <section class="card">
 
         <div class="card-inner">
 
           <div class="section-label">
-            02 / What we found
+            02 / Decision board
           </div>
 
+
           <h2>
-            Four decisions emerge from the analysis.
+            If this were the account, these are the four decisions we'd make first.
           </h2>
 
+
           <p class="intro">
-            The diagnostic is designed to produce decisions rather than another
-            collection of charts.
+
+            The purpose of the diagnostic is not to produce more reporting.
+            It is to reduce the number of decisions the growth team has to make.
+
           </p>
 
 
           <div class="decision-grid">
 
+
             <article class="decision stop">
 
               <div class="decision-header">
-                <span class="tag">STOP</span>
-                <span class="confidence">Confidence: HIGH</span>
+
+                <span class="tag">
+                  STOP
+                </span>
+
+                <span class="confidence">
+                  HIGH CONFIDENCE
+                </span>
+
               </div>
 
+
               <h3>
-                Campaign X
+                Reduce deteriorating prospecting
               </h3>
 
+
               <p>
-                Spend increased while conversion efficiency deteriorated.
-                Marginal performance is below the account benchmark.
+
+                Spend is increasing while conversion efficiency is deteriorating.
+                The marginal dollar is becoming less productive.
+
               </p>
 
+
               <div class="decision-action">
-                Reduce marginal exposure and redirect budget into controlled tests.
+
+                ACTION → Reduce marginal exposure first, not the entire campaign.
+
               </div>
 
             </article>
+
 
 
             <article class="decision fix">
 
               <div class="decision-header">
-                <span class="tag">FIX</span>
-                <span class="confidence">Confidence: MEDIUM</span>
+
+                <span class="tag">
+                  FIX
+                </span>
+
+                <span class="confidence">
+                  MEDIUM CONFIDENCE
+                </span>
+
               </div>
 
+
               <h3>
-                Landing page
+                Investigate landing-page leakage
               </h3>
 
+
               <p>
-                Ad-to-page messaging is inconsistent with the strongest acquisition
-                audiences, creating potential conversion leakage.
+
+                CTR remains relatively stable while landing-page conversion
+                weakens. The issue may sit after the click.
+
               </p>
 
+
               <div class="decision-action">
-                Align message, offer and landing experience before scaling traffic.
+
+                ACTION → Validate audience, offer and landing-page alignment.
+
               </div>
 
             </article>
+
 
 
             <article class="decision scale">
 
               <div class="decision-header">
-                <span class="tag">SCALE</span>
-                <span class="confidence">Confidence: HIGH</span>
+
+                <span class="tag">
+                  SCALE
+                </span>
+
+                <span class="confidence">
+                  HIGH CONFIDENCE
+                </span>
+
               </div>
 
+
               <h3>
-                Campaign Y
+                Increase stronger marginal opportunities
               </h3>
 
+
               <p>
-                Strong marginal efficiency and stable conversion performance suggest
-                additional budget can be investigated.
+
+                Selected campaigns are delivering stronger marginal efficiency
+                and should receive controlled incremental budget.
+
               </p>
 
+
               <div class="decision-action">
-                Increase budget gradually while monitoring marginal performance.
+
+                ACTION → Increase gradually and monitor marginal CPA.
+
               </div>
 
             </article>
+
 
 
             <article class="decision test">
 
               <div class="decision-header">
-                <span class="tag">TEST</span>
-                <span class="confidence">Confidence: MEDIUM</span>
+
+                <span class="tag">
+                  TEST
+                </span>
+
+                <span class="confidence">
+                  MEDIUM CONFIDENCE
+                </span>
+
               </div>
 
+
               <h3>
-                Creative angles
+                Test new creative and offers
               </h3>
 
+
               <p>
-                Three new creative hypotheses should be tested against the strongest
-                audience and offer combinations.
+
+                New creative hypotheses should be tested against the strongest
+                audience and offer combinations rather than launched broadly.
+
               </p>
 
+
               <div class="decision-action">
-                Run controlled creative tests before broad account changes.
+
+                ACTION → Run controlled tests with predefined success criteria.
+
               </div>
 
             </article>
+
 
           </div>
 
@@ -1543,32 +1957,38 @@
       </section>
 
 
-      <!-- =========================
-           03 DATA STACK
-      ========================== -->
+
+      <!-- ==========================================
+           03 DATA ECOSYSTEM
+      ========================================== -->
 
       <section class="card">
 
         <div class="card-inner">
 
           <div class="section-label">
-            03 / Data stack
+            03 / Data ecosystem
           </div>
 
+
           <h2>
-            One view across the acquisition ecosystem.
+            One diagnosis across the actual DTC business.
           </h2>
 
+
           <p class="intro">
-            Metrivio does not treat paid-media platforms as the complete picture.
-            The diagnostic connects acquisition data with the ecommerce system
-            where revenue, conversion and customer economics actually appear.
+
+            Paid media is only one part of the acquisition system.
+            The analysis should connect the platforms buying the traffic
+            with the commerce platforms recording the revenue.
+
           </p>
 
 
-          <div class="data-stack">
+          <div class="sources">
 
-            <div class="data-source">
+
+            <div class="source">
 
               <div class="source-number">
                 01 / PAID MEDIA
@@ -1579,10 +1999,10 @@
               </h3>
 
               <p>
-                Campaign and creative-level acquisition performance.
+                Campaign, audience and creative performance.
               </p>
 
-              <div class="source-data">
+              <div class="source-tags">
                 <span>Spend</span>
                 <span>CPA</span>
                 <span>CTR</span>
@@ -1592,7 +2012,7 @@
             </div>
 
 
-            <div class="data-source">
+            <div class="source">
 
               <div class="source-number">
                 02 / PAID MEDIA
@@ -1603,10 +2023,10 @@
               </h3>
 
               <p>
-                Search, PMax and other acquisition activity.
+                Search, PMax and intent-driven acquisition.
               </p>
 
-              <div class="source-data">
+              <div class="source-tags">
                 <span>Spend</span>
                 <span>CPA</span>
                 <span>ROAS</span>
@@ -1616,7 +2036,7 @@
             </div>
 
 
-            <div class="data-source">
+            <div class="source">
 
               <div class="source-number">
                 03 / MARKETPLACE
@@ -1627,10 +2047,10 @@
               </h3>
 
               <p>
-                Marketplace sales and advertising performance.
+                Marketplace demand and advertising efficiency.
               </p>
 
-              <div class="source-data">
+              <div class="source-tags">
                 <span>Sales</span>
                 <span>ACOS</span>
                 <span>TACOS</span>
@@ -1640,7 +2060,7 @@
             </div>
 
 
-            <div class="data-source">
+            <div class="source">
 
               <div class="source-number">
                 04 / COMMERCE
@@ -1651,10 +2071,10 @@
               </h3>
 
               <p>
-                Store-level revenue and customer economics.
+                Store revenue and customer economics.
               </p>
 
-              <div class="source-data">
+              <div class="source-tags">
                 <span>Revenue</span>
                 <span>AOV</span>
                 <span>CVR</span>
@@ -1663,19 +2083,22 @@
 
             </div>
 
+
           </div>
 
 
-          <div class="data-connection">
+          <div class="source-note">
 
             <strong>
-              Why this matters:
+              The important part isn't connecting four platforms.
             </strong>
 
-            Platform-reported performance can look attractive while the underlying
-            business economics tell a different story. The diagnostic therefore
-            looks for consistency — and contradictions — across media, marketplace,
-            store and customer-level data.
+            It's finding where their stories disagree.
+
+            A Meta campaign can report strong ROAS while Shopify contribution
+            economics weaken. Amazon can show efficient ACOS while total
+            marketplace economics deteriorate. Metrivio's job is to identify
+            those contradictions before the business makes a budget decision.
 
           </div>
 
@@ -1684,93 +2107,176 @@
       </section>
 
 
-      <!-- =========================
-           04 MEDIA ANALYSIS
-      ========================== -->
+
+      <!-- ==========================================
+           04 CHANNEL PERFORMANCE
+      ========================================== -->
 
       <section class="card">
 
         <div class="card-inner">
 
           <div class="section-label">
-            04 / Media analysis
+            04 / Efficiency map
           </div>
 
+
           <h2>
-            Where the acquisition budget is working — and where it isn't.
+            Where the next dollar deserves attention.
           </h2>
 
+
           <p class="intro">
-            Channel-level efficiency is only the starting point. The diagnostic
-            focuses on marginal performance and the business decision each channel supports.
+
+            Platform-reported efficiency is useful, but the decision is based
+            on marginal performance and the wider business context.
+
           </p>
 
 
-          <div class="table-wrapper">
+          <div class="table-wrap">
 
             <table>
 
               <thead>
 
                 <tr>
-                  <th>Source</th>
-                  <th>Spend</th>
-                  <th>Primary metric</th>
-                  <th>Efficiency</th>
-                  <th>Decision</th>
+
+                  <th>
+                    Source
+                  </th>
+
+                  <th>
+                    Spend
+                  </th>
+
+                  <th>
+                    Primary signal
+                  </th>
+
+                  <th>
+                    Diagnosis
+                  </th>
+
+                  <th>
+                    Decision
+                  </th>
+
                 </tr>
 
               </thead>
 
+
               <tbody>
 
-                <tr>
-                  <td>Meta Prospecting</td>
-                  <td>$72k</td>
-                  <td>CPA $64</td>
-                  <td>Below benchmark</td>
-                  <td>
-                    <span class="pill pill-investigate">
-                      INVESTIGATE
-                    </span>
-                  </td>
-                </tr>
 
                 <tr>
-                  <td>Meta Retargeting</td>
-                  <td>$18k</td>
-                  <td>CPA $41</td>
-                  <td>Strong</td>
+
                   <td>
-                    <span class="pill pill-scale">
+                    Meta Prospecting
+                  </td>
+
+                  <td>
+                    $72k
+                  </td>
+
+                  <td>
+                    CPA $64
+                  </td>
+
+                  <td>
+                    Weakening
+                  </td>
+
+                  <td>
+                    <span class="pill pill-red">
+                      REDUCE
+                    </span>
+                  </td>
+
+                </tr>
+
+
+                <tr>
+
+                  <td>
+                    Meta Retargeting
+                  </td>
+
+                  <td>
+                    $18k
+                  </td>
+
+                  <td>
+                    CPA $41
+                  </td>
+
+                  <td>
+                    Strong
+                  </td>
+
+                  <td>
+                    <span class="pill pill-green">
                       SCALE
                     </span>
                   </td>
+
                 </tr>
 
+
                 <tr>
-                  <td>Google Search</td>
-                  <td>$38k</td>
-                  <td>CPA $46</td>
-                  <td>Strong</td>
+
                   <td>
-                    <span class="pill pill-maintain">
+                    Google Search
+                  </td>
+
+                  <td>
+                    $38k
+                  </td>
+
+                  <td>
+                    CPA $46
+                  </td>
+
+                  <td>
+                    Strong
+                  </td>
+
+                  <td>
+                    <span class="pill pill-blue">
                       MAINTAIN
                     </span>
                   </td>
+
                 </tr>
 
+
                 <tr>
-                  <td>Google PMax</td>
-                  <td>$22k</td>
-                  <td>CPA $71</td>
-                  <td>Weakening</td>
+
                   <td>
-                    <span class="pill pill-test">
+                    Google PMax
+                  </td>
+
+                  <td>
+                    $22k
+                  </td>
+
+                  <td>
+                    CPA $71
+                  </td>
+
+                  <td>
+                    Weakening
+                  </td>
+
+                  <td>
+                    <span class="pill pill-amber">
                       TEST
                     </span>
                   </td>
+
                 </tr>
+
 
               </tbody>
 
@@ -1783,34 +2289,40 @@
       </section>
 
 
-      <!-- =========================
+
+      <!-- ==========================================
            05 AMAZON + SHOPIFY
-      ========================== -->
+      ========================================== -->
 
       <section class="card">
 
         <div class="card-inner">
 
           <div class="section-label">
-            05 / Ecommerce intelligence
+            05 / Commerce layer
           </div>
 
+
           <h2>
-            The sale doesn't end when the ad gets the click.
+            What happens after the ad platform claims the conversion?
           </h2>
 
+
           <p class="intro">
-            For DTC brands selling through both their own store and marketplaces,
-            acquisition efficiency needs to be understood across the complete
-            commerce ecosystem.
+
+            For a DTC brand, the real diagnostic continues into Shopify
+            and Amazon. This is where acquisition turns into revenue,
+            margin and customer value.
+
           </p>
 
 
           <div class="commerce-grid">
 
+
             <div class="commerce-card">
 
-              <div class="commerce-card-header">
+              <div class="commerce-header">
 
                 <h3>
                   Amazon
@@ -1823,44 +2335,50 @@
               </div>
 
 
-              <div class="commerce-metric">
+              <div class="metric-row">
                 <span>Amazon Ads spend</span>
                 <strong>$18k</strong>
               </div>
 
-              <div class="commerce-metric">
+              <div class="metric-row">
                 <span>ACOS</span>
                 <strong>31%</strong>
               </div>
 
-              <div class="commerce-metric">
+              <div class="metric-row">
                 <span>TACOS</span>
                 <strong>14%</strong>
               </div>
 
-              <div class="commerce-metric">
+              <div class="metric-row">
                 <span>Conversion rate</span>
                 <strong>Strong</strong>
               </div>
 
-              <div class="commerce-metric">
+              <div class="metric-row">
                 <span>Product velocity</span>
                 <strong>Improving</strong>
               </div>
 
 
-              <div class="commerce-note">
-                <strong>Diagnostic question:</strong>
-                Is Amazon advertising creating incremental marketplace demand,
-                or primarily capturing demand that would have converted organically?
+              <div class="commerce-insight">
+
+                <strong>
+                  What we'd investigate →
+                </strong>
+
+                Is Amazon advertising creating incremental demand,
+                or primarily harvesting demand that already existed?
+
               </div>
 
             </div>
 
 
+
             <div class="commerce-card">
 
-              <div class="commerce-card-header">
+              <div class="commerce-header">
 
                 <h3>
                   Shopify
@@ -1873,36 +2391,41 @@
               </div>
 
 
-              <div class="commerce-metric">
+              <div class="metric-row">
                 <span>Store revenue</span>
                 <strong>$92k</strong>
               </div>
 
-              <div class="commerce-metric">
+              <div class="metric-row">
                 <span>Conversion rate</span>
                 <strong>2.8%</strong>
               </div>
 
-              <div class="commerce-metric">
+              <div class="metric-row">
                 <span>AOV</span>
                 <strong>$74</strong>
               </div>
 
-              <div class="commerce-metric">
+              <div class="metric-row">
                 <span>New customer share</span>
                 <strong>68%</strong>
               </div>
 
-              <div class="commerce-metric">
+              <div class="metric-row">
                 <span>Repeat customer share</span>
                 <strong>32%</strong>
               </div>
 
 
-              <div class="commerce-note">
-                <strong>Diagnostic question:</strong>
-                Is declining acquisition efficiency caused by media performance,
-                or by conversion and customer-economics changes downstream?
+              <div class="commerce-insight">
+
+                <strong>
+                  What we'd investigate →
+                </strong>
+
+                Is acquisition efficiency deteriorating because of media,
+                or because the conversion economics after the click have weakened?
+
               </div>
 
             </div>
@@ -1914,35 +2437,210 @@
       </section>
 
 
-      <!-- =========================
-           06 FUNNEL
-      ========================== -->
+
+      <!-- ==========================================
+           06 OPPORTUNITY MAP
+      ========================================== -->
 
       <section class="card">
 
         <div class="card-inner">
 
           <div class="section-label">
-            06 / Funnel &amp; customer journey
+            06 / Opportunity map
           </div>
 
+
           <h2>
-            Follow the customer beyond the ad platform.
+            Not every problem deserves equal attention.
           </h2>
 
+
           <p class="intro">
-            A media channel can appear inefficient when the real problem sits
-            further down the funnel. Metrivio tests those alternative explanations
-            before recommending budget changes.
+
+            The highest-value opportunities are ranked by likely economic
+            impact and confidence — so the growth team knows where to start.
+
+          </p>
+
+
+          <div class="opportunity-table">
+
+
+            <div class="opportunity">
+
+              <div class="priority">
+                01
+              </div>
+
+              <div>
+
+                <h3>
+                  Reallocate deteriorating prospecting spend
+                </h3>
+
+                <p>
+                  Reduce marginal exposure and redirect toward stronger opportunities.
+                </p>
+
+              </div>
+
+              <div class="opp-value">
+                ~$7.2k
+              </div>
+
+              <div class="opp-confidence">
+                High
+              </div>
+
+              <div class="opp-action">
+                DO FIRST
+              </div>
+
+            </div>
+
+
+            <div class="opportunity">
+
+              <div class="priority">
+                02
+              </div>
+
+              <div>
+
+                <h3>
+                  Recover landing-page conversion
+                </h3>
+
+                <p>
+                  Validate message, offer and audience alignment.
+                </p>
+
+              </div>
+
+              <div class="opp-value">
+                ~$2.8k
+              </div>
+
+              <div class="opp-confidence">
+                Medium
+              </div>
+
+              <div class="opp-action">
+                INVESTIGATE
+              </div>
+
+            </div>
+
+
+            <div class="opportunity">
+
+              <div class="priority">
+                03
+              </div>
+
+              <div>
+
+                <h3>
+                  Scale stronger marginal campaigns
+                </h3>
+
+                <p>
+                  Increase budget gradually while monitoring marginal CPA.
+                </p>
+
+              </div>
+
+              <div class="opp-value">
+                ~$1.9k
+              </div>
+
+              <div class="opp-confidence">
+                High
+              </div>
+
+              <div class="opp-action">
+                SCALE
+              </div>
+
+            </div>
+
+
+            <div class="opportunity">
+
+              <div class="priority">
+                04
+              </div>
+
+              <div>
+
+                <h3>
+                  Expand creative learning agenda
+                </h3>
+
+                <p>
+                  Test three new creative and offer hypotheses.
+                </p>
+
+              </div>
+
+              <div class="opp-value">
+                ~$0.8k
+              </div>
+
+              <div class="opp-confidence">
+                Medium
+              </div>
+
+              <div class="opp-action">
+                TEST
+              </div>
+
+            </div>
+
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+
+      <!-- ==========================================
+           07 FUNNEL
+      ========================================== -->
+
+      <section class="card">
+
+        <div class="card-inner">
+
+          <div class="section-label">
+            07 / Funnel diagnosis
+          </div>
+
+
+          <h2>
+            The problem may not be where the dashboard says it is.
+          </h2>
+
+
+          <p class="intro">
+
+            A declining platform metric does not automatically mean the media
+            needs to be cut. We follow the customer through the funnel before
+            deciding where the intervention belongs.
+
           </p>
 
 
           <div class="funnel">
 
+
             <div class="funnel-step">
 
               <small>
-                Acquisition
+                01 / Acquisition
               </small>
 
               <strong>
@@ -1959,7 +2657,7 @@
             <div class="funnel-step">
 
               <small>
-                Engagement
+                02 / Engagement
               </small>
 
               <strong>
@@ -1976,7 +2674,7 @@
             <div class="funnel-step">
 
               <small>
-                Commerce
+                03 / Commerce
               </small>
 
               <strong>
@@ -1993,7 +2691,7 @@
             <div class="funnel-step">
 
               <small>
-                Marketplace
+                04 / Marketplace
               </small>
 
               <strong>
@@ -2010,7 +2708,7 @@
             <div class="funnel-step">
 
               <small>
-                Economics
+                05 / Economics
               </small>
 
               <strong>
@@ -2023,65 +2721,75 @@
 
             </div>
 
+
           </div>
 
 
-          <div class="commerce-grid">
+          <div class="evidence-box">
 
-            <div class="commerce-card">
+            <h3>
+              What the evidence currently suggests
+            </h3>
 
-              <div class="section-label">
-                Funnel signals
+
+            <div class="evidence-grid">
+
+
+              <div class="evidence-item">
+
+                <strong>
+                  CONFIRMED SIGNAL
+                </strong>
+
+                <p>
+                  CTR remains broadly stable while landing-page conversion
+                  has weakened for the highest-spend prospecting audience.
+                </p>
+
               </div>
 
-              <div class="commerce-metric">
-                <span>CTR</span>
-                <strong>Broadly stable</strong>
+
+              <div class="evidence-item">
+
+                <strong>
+                  HYPOTHESIS
+                </strong>
+
+                <p>
+                  Audience quality, offer alignment or landing-page experience
+                  may be responsible for part of the deterioration.
+                </p>
+
               </div>
 
-              <div class="commerce-metric">
-                <span>Landing-page CVR</span>
-                <strong>Declining</strong>
+
+              <div class="evidence-item">
+
+                <strong>
+                  BUSINESS IMPLICATION
+                </strong>
+
+                <p>
+                  Cutting the entire campaign could remove profitable volume
+                  before the actual cause of the problem is established.
+                </p>
+
               </div>
 
-              <div class="commerce-metric">
-                <span>Checkout CVR</span>
-                <strong>Broadly stable</strong>
+
+              <div class="evidence-item">
+
+                <strong>
+                  NEXT TEST
+                </strong>
+
+                <p>
+                  Compare landing-page CVR, contribution CAC and marginal
+                  performance before and after the intervention.
+                </p>
+
               </div>
 
-              <div class="commerce-metric">
-                <span>AOV</span>
-                <strong>Stable</strong>
-              </div>
-
-            </div>
-
-
-            <div class="commerce-card">
-
-              <div class="section-label">
-                Economic signals
-              </div>
-
-              <div class="commerce-metric">
-                <span>CAC</span>
-                <strong>Increasing</strong>
-              </div>
-
-              <div class="commerce-metric">
-                <span>Payback</span>
-                <strong>Lengthening</strong>
-              </div>
-
-              <div class="commerce-metric">
-                <span>Marginal efficiency</span>
-                <strong>Stronger in selected campaigns</strong>
-              </div>
-
-              <div class="commerce-metric">
-                <span>Contribution margin</span>
-                <strong>Under pressure</strong>
-              </div>
 
             </div>
 
@@ -2092,29 +2800,36 @@
       </section>
 
 
-      <!-- =========================
-           07 ECONOMICS
-      ========================== -->
+
+      <!-- ==========================================
+           08 ECONOMICS
+      ========================================== -->
 
       <section class="card">
 
         <div class="card-inner">
 
           <div class="section-label">
-            07 / Economic opportunity
+            08 / Economic opportunity
           </div>
 
+
           <h2>
-            Why the allocation decision matters.
+            The goal is not cheaper media. It is better economics.
           </h2>
 
+
           <p class="intro">
-            At $150k of monthly acquisition spend, relatively small changes in
-            marginal efficiency can have meaningful consequences.
+
+            A lower platform CPA is not automatically a better business outcome.
+            The recommendation should ultimately be judged by contribution economics
+            and the quality of the marginal dollar.
+
           </p>
 
 
           <div class="economic-grid">
+
 
             <div class="economic-callout">
 
@@ -2127,8 +2842,10 @@
               </div>
 
               <p>
-                Potential opportunity identified across inefficient marginal
-                spend, funnel leakage and stronger allocation candidates.
+
+                Potential opportunity identified across deteriorating
+                marginal spend, funnel leakage and stronger allocation candidates.
+
               </p>
 
             </div>
@@ -2136,9 +2853,11 @@
 
             <div class="economic-list">
 
+
               <div class="economic-row">
 
                 <div>
+
                   <strong>
                     Deteriorating prospecting
                   </strong>
@@ -2146,6 +2865,7 @@
                   <p>
                     Spend is growing faster than conversion efficiency.
                   </p>
+
                 </div>
 
                 <div class="amount">
@@ -2158,6 +2878,7 @@
               <div class="economic-row">
 
                 <div>
+
                   <strong>
                     Landing-page leakage
                   </strong>
@@ -2165,6 +2886,7 @@
                   <p>
                     Conversion decline is concentrated in high-spend audiences.
                   </p>
+
                 </div>
 
                 <div class="amount">
@@ -2177,6 +2899,7 @@
               <div class="economic-row">
 
                 <div>
+
                   <strong>
                     Under-scaled opportunity
                   </strong>
@@ -2184,6 +2907,7 @@
                   <p>
                     Selected campaigns show stronger marginal efficiency.
                   </p>
+
                 </div>
 
                 <div class="amount">
@@ -2196,6 +2920,7 @@
               <div class="economic-row">
 
                 <div>
+
                   <strong>
                     Creative test opportunity
                   </strong>
@@ -2203,6 +2928,7 @@
                   <p>
                     New hypotheses could improve marginal performance.
                   </p>
+
                 </div>
 
                 <div class="amount">
@@ -2211,6 +2937,7 @@
 
               </div>
 
+
             </div>
 
           </div>
@@ -2220,158 +2947,274 @@
       </section>
 
 
-      <!-- =========================
-           08 ACTION PLAN
-      ========================== -->
+
+      <!-- ==========================================
+           09 EXACT NEXT MOVES
+      ========================================== -->
 
       <section class="card">
 
         <div class="card-inner">
 
           <div class="section-label">
-            08 / 30-day action plan
+            09 / What happens next
           </div>
 
+
           <h2>
-            What we'd do next.
+            The first 30 days, mapped out.
           </h2>
 
+
           <p class="intro">
-            The objective is not to make every possible change. It is to make
-            a small number of high-confidence changes, then measure what happens.
+
+            Every recommendation needs an owner, a timeframe and a definition
+            of what success looks like. Otherwise it is just analysis.
+
           </p>
 
 
-          <div class="action-list">
+          <div class="roadmap">
 
-            <div class="action">
 
-              <div class="action-number">
-                01
+            <div class="roadmap-row">
+
+              <div class="roadmap-number">
+                WEEK 01
               </div>
+
 
               <div>
 
                 <h3>
-                  Reallocate
+                  Reallocate $10k of marginal spend
                 </h3>
 
                 <p>
-                  Move a portion of marginal budget away from deteriorating
-                  prospecting campaigns and into stronger marginal opportunities.
+
+                  Reduce exposure in deteriorating prospecting activity
+                  and move the initial budget into stronger marginal campaigns.
+
                 </p>
 
               </div>
 
-              <div class="action-outcome">
-                Improve marginal efficiency
+
+              <div class="roadmap-owner">
+
+                <span>
+                  Owner
+                </span>
+
+                Growth / Media
+
+              </div>
+
+
+              <div class="roadmap-outcome">
+
+                <span>
+                  Success
+                </span>
+
+                Improved marginal CPA
+
               </div>
 
             </div>
 
 
-            <div class="action">
 
-              <div class="action-number">
-                02
+            <div class="roadmap-row">
+
+              <div class="roadmap-number">
+                WEEK 01–02
               </div>
+
 
               <div>
 
                 <h3>
-                  Investigate
+                  Diagnose the conversion drop
                 </h3>
 
                 <p>
-                  Validate landing-page conversion, audience quality and
-                  post-click behaviour before making permanent campaign decisions.
+
+                  Compare audience, landing-page, offer and device-level
+                  conversion to isolate where the leakage is occurring.
+
                 </p>
 
               </div>
 
-              <div class="action-outcome">
-                Confirm root cause
+
+              <div class="roadmap-owner">
+
+                <span>
+                  Owner
+                </span>
+
+                Growth / CRO
+
+              </div>
+
+
+              <div class="roadmap-outcome">
+
+                <span>
+                  Success
+                </span>
+
+                Root cause identified
+
               </div>
 
             </div>
 
 
-            <div class="action">
 
-              <div class="action-number">
-                03
+            <div class="roadmap-row">
+
+              <div class="roadmap-number">
+                WEEK 02
               </div>
+
 
               <div>
 
                 <h3>
-                  Reconcile
+                  Reconcile Shopify + Amazon economics
                 </h3>
 
                 <p>
-                  Compare platform-reported performance against Shopify revenue,
-                  Amazon sales and customer economics to identify measurement gaps.
+
+                  Compare platform-attributed performance against store revenue,
+                  marketplace sales and customer economics.
+
                 </p>
 
               </div>
 
-              <div class="action-outcome">
-                Improve decision confidence
+
+              <div class="roadmap-owner">
+
+                <span>
+                  Owner
+                </span>
+
+                Analytics
+
+              </div>
+
+
+              <div class="roadmap-outcome">
+
+                <span>
+                  Success
+                </span>
+
+                Measurement gaps closed
+
               </div>
 
             </div>
 
 
-            <div class="action">
 
-              <div class="action-number">
-                04
+            <div class="roadmap-row">
+
+              <div class="roadmap-number">
+                WEEK 02–03
               </div>
+
 
               <div>
 
                 <h3>
-                  Test
+                  Launch three controlled creative tests
                 </h3>
 
                 <p>
-                  Launch new creative, offer and audience hypotheses against
-                  the strongest combinations.
+
+                  Test new creative and offer hypotheses against the strongest
+                  audience combinations.
+
                 </p>
 
               </div>
 
-              <div class="action-outcome">
-                Create new winners
+
+              <div class="roadmap-owner">
+
+                <span>
+                  Owner
+                </span>
+
+                Creative / Growth
+
+              </div>
+
+
+              <div class="roadmap-outcome">
+
+                <span>
+                  Success
+                </span>
+
+                New winning signal
+
               </div>
 
             </div>
 
 
-            <div class="action">
 
-              <div class="action-number">
-                05
+            <div class="roadmap-row">
+
+              <div class="roadmap-number">
+                WEEK 04
               </div>
+
 
               <div>
 
                 <h3>
-                  Measure
+                  Review marginal performance and decide the next allocation
                 </h3>
 
                 <p>
-                  Evaluate changes using contribution CAC, conversion efficiency
-                  and marginal performance rather than platform ROAS alone.
+
+                  Keep, reverse or expand the changes based on contribution
+                  CAC, conversion efficiency and incremental performance.
+
                 </p>
 
               </div>
 
-              <div class="action-outcome">
-                Validate impact
+
+              <div class="roadmap-owner">
+
+                <span>
+                  Owner
+                </span>
+
+                Leadership
+
+              </div>
+
+
+              <div class="roadmap-outcome">
+
+                <span>
+                  Success
+                </span>
+
+                Next budget decision
+
               </div>
 
             </div>
+
 
           </div>
 
@@ -2380,30 +3223,127 @@
       </section>
 
 
-      <!-- =========================
-           09 METHODOLOGY
-      ========================== -->
+
+      <!-- ==========================================
+           10 MEASUREMENT
+      ========================================== -->
 
       <section class="card">
 
         <div class="card-inner">
 
           <div class="section-label">
-            09 / The Metrivio approach
+            10 / Measurement plan
           </div>
 
+
           <h2>
-            Better marketing decisions start with better diagnosis.
+            How we'd know the recommendations actually worked.
           </h2>
 
+
           <p class="intro">
-            Metrivio connects the decisions that are often analysed separately:
-            media allocation, funnel conversion, ecommerce performance and
-            customer economics.
+
+            Recommendations are not considered successful because a dashboard
+            turns green. They are evaluated against the business outcome they
+            were intended to change.
+
+          </p>
+
+
+          <div class="measurement-grid">
+
+
+            <div class="measurement">
+
+              <div class="measurement-number">
+                01 / MEDIA
+              </div>
+
+              <h3>
+                Marginal CPA
+              </h3>
+
+              <p>
+                Did the additional dollar produce customers at an acceptable
+                marginal acquisition cost?
+              </p>
+
+            </div>
+
+
+            <div class="measurement">
+
+              <div class="measurement-number">
+                02 / FUNNEL
+              </div>
+
+              <h3>
+                Landing-page CVR
+              </h3>
+
+              <p>
+                Did conversion improve after correcting the suspected
+                post-click issue?
+              </p>
+
+            </div>
+
+
+            <div class="measurement">
+
+              <div class="measurement-number">
+                03 / ECONOMICS
+              </div>
+
+              <h3>
+                Contribution CAC
+              </h3>
+
+              <p>
+                Did the intervention improve acquisition economics rather
+                than simply platform-reported ROAS?
+              </p>
+
+            </div>
+
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+
+      <!-- ==========================================
+           11 METHODOLOGY
+      ========================================== -->
+
+      <section class="card">
+
+        <div class="card-inner">
+
+          <div class="section-label">
+            11 / The Metrivio approach
+          </div>
+
+
+          <h2>
+            From marketing data to decisions.
+          </h2>
+
+
+          <p class="intro">
+
+            Metrivio's process is deliberately structured around diagnosis,
+            challenge, quantification, prioritization and measurement.
+
           </p>
 
 
           <div class="method-grid">
+
 
             <div class="method">
 
@@ -2416,8 +3356,7 @@
               </h3>
 
               <p>
-                Analyse paid media, Shopify, Amazon, funnel behaviour and
-                customer economics.
+                Paid media, funnel, Shopify, Amazon and customer economics.
               </p>
 
             </div>
@@ -2434,8 +3373,8 @@
               </h3>
 
               <p>
-                Separate media problems from creative, measurement, funnel
-                and economic problems.
+                Separate media problems from creative, funnel and
+                measurement problems.
               </p>
 
             </div>
@@ -2444,19 +3383,70 @@
             <div class="method">
 
               <div class="method-number">
-                03 / PRIORITIZE
+                03 / QUANTIFY
               </div>
 
               <h3>
-                Turn evidence into action
+                Connect to economics
               </h3>
 
               <p>
-                Rank opportunities by likely impact, confidence and effort,
-                then define how each should be tested.
+                CAC, AOV, margin, LTV and payback where the data allows.
               </p>
 
             </div>
+
+
+            <div class="method">
+
+              <div class="method-number">
+                04 / PRIORITIZE
+              </div>
+
+              <h3>
+                Rank the opportunities
+              </h3>
+
+              <p>
+                Focus attention on impact, confidence and effort.
+              </p>
+
+            </div>
+
+
+            <div class="method">
+
+              <div class="method-number">
+                05 / MEASURE
+              </div>
+
+              <h3>
+                Define the test
+              </h3>
+
+              <p>
+                Every recommendation gets a measurable outcome.
+              </p>
+
+            </div>
+
+
+            <div class="method">
+
+              <div class="method-number">
+                06 / DECIDE
+              </div>
+
+              <h3>
+                Make the next allocation
+              </h3>
+
+              <p>
+                Turn evidence into the next budget and growth decision.
+              </p>
+
+            </div>
+
 
           </div>
 
@@ -2468,12 +3458,14 @@
             </strong>
 
             <p>
+
               This page is an illustrative example, not a claim about actual
               client performance. Actual recommendations depend on the quality,
               completeness and consistency of the underlying marketing,
               ecommerce and business data. Where evidence is incomplete,
               the diagnostic should identify the gap rather than present
               an assumption as fact.
+
             </p>
 
           </div>
@@ -2483,11 +3475,13 @@
       </section>
 
 
-      <!-- =========================
-           CTA
-      ========================== -->
+
+      <!-- ==========================================
+           FINAL CTA
+      ========================================== -->
 
       <div class="cta">
+
 
         <div>
 
@@ -2495,32 +3489,40 @@
             The real diagnostic
           </div>
 
+
           <h2>
             Find out where your next dollar should go.
           </h2>
 
+
           <p>
+
             If you're spending $15k+ a month on acquisition and want an
             independent view of what's working, what's leaking and where
             the next dollar deserves to go, request a Metrivio review.
+
           </p>
 
         </div>
+
 
         <a href="index.html#review" class="cta-button">
           Get your review →
         </a>
 
+
       </div>
+
 
     </div>
 
   </main>
 
 
-  <!-- =========================
+
+  <!-- ==========================================
        FOOTER
-  ========================== -->
+  ========================================== -->
 
   <footer>
 
@@ -2537,6 +3539,7 @@
     </div>
 
   </footer>
+
 
 </body>
 </html>
