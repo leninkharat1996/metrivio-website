@@ -1,367 +1,1931 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>Metrivio — Sample Marketing Efficiency Diagnostic</title>
 
-  <meta name="description" content="Illustrative Metrivio Marketing Efficiency Diagnostic showing how marketing performance is assessed across media, funnel and economics.">
+  <meta
+    name="description"
+    content="An illustrative Metrivio marketing efficiency diagnostic showing how acquisition data becomes clearer business decisions."
+  >
 
-  <link rel="stylesheet" href="style.css">
+  <style>
+    :root {
+      --bg: #f5f6f8;
+      --surface: #ffffff;
+      --surface-soft: #f8f9fb;
+      --ink: #101828;
+      --muted: #667085;
+      --muted-dark: #475467;
+      --line: #e4e7ec;
+      --navy: #101828;
+
+      --green: #087443;
+      --green-bg: #ecfdf3;
+      --green-line: #abefc6;
+
+      --red: #b42318;
+      --red-bg: #fef3f2;
+      --red-line: #fecdca;
+
+      --amber: #b54708;
+      --amber-bg: #fffaeb;
+      --amber-line: #fedf89;
+
+      --blue: #175cd3;
+      --blue-bg: #eff8ff;
+      --blue-line: #b2ddff;
+
+      --shadow: 0 10px 30px rgba(16, 24, 40, 0.045);
+      --radius: 14px;
+      --max: 1120px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family:
+        Inter,
+        ui-sans-serif,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Helvetica,
+        Arial,
+        sans-serif;
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(calc(100% - 40px), var(--max));
+      margin: 0 auto;
+    }
+
+    /* =========================
+       NAVIGATION
+    ========================== */
+
+    .topbar {
+      height: 68px;
+      background: rgba(255, 255, 255, 0.94);
+      border-bottom: 1px solid var(--line);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(12px);
+    }
+
+    .topbar-inner {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      font-size: 18px;
+      font-weight: 750;
+      letter-spacing: -0.03em;
+    }
+
+    .brand-mark {
+      width: 25px;
+      height: 25px;
+      border-radius: 7px;
+      background: var(--navy);
+      color: #fff;
+      display: grid;
+      place-items: center;
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .nav-right a:hover {
+      color: var(--ink);
+    }
+
+    .nav-cta {
+      color: #fff !important;
+      background: var(--navy);
+      padding: 9px 14px;
+      border-radius: 8px;
+      font-weight: 650;
+    }
+
+    /* =========================
+       REPORT HEADER
+    ========================== */
+
+    .report-header {
+      padding: 72px 0 42px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--muted-dark);
+      font-size: 11px;
+      font-weight: 750;
+      letter-spacing: 0.11em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .eyebrow-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--green);
+    }
+
+    h1 {
+      max-width: 850px;
+      font-size: clamp(40px, 5.2vw, 62px);
+      line-height: 1.02;
+      letter-spacing: -0.055em;
+      font-weight: 760;
+      margin-bottom: 20px;
+    }
+
+    .header-subtitle {
+      max-width: 760px;
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.65;
+    }
+
+    .illustrative-banner {
+      margin-top: 30px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px 18px;
+      padding: 13px 16px;
+      border: 1px solid var(--amber-line);
+      background: #fffaf0;
+      border-radius: 10px;
+      color: #7a4d00;
+      font-size: 12px;
+    }
+
+    .illustrative-banner strong {
+      font-weight: 800;
+      letter-spacing: 0.03em;
+    }
+
+    .report-meta {
+      margin-top: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .meta-pill {
+      padding: 7px 10px;
+      border: 1px solid var(--line);
+      background: #fff;
+      border-radius: 999px;
+      color: var(--muted-dark);
+      font-size: 12px;
+    }
+
+    /* =========================
+       GENERAL SECTIONS
+    ========================== */
+
+    section {
+      margin-bottom: 24px;
+    }
+
+    .section-card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .section-inner {
+      padding: 34px;
+    }
+
+    .section-label {
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 750;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    h2 {
+      font-size: 28px;
+      line-height: 1.15;
+      letter-spacing: -0.035em;
+      margin-bottom: 10px;
+    }
+
+    .section-intro {
+      max-width: 780px;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    /* =========================
+       EXECUTIVE SUMMARY
+    ========================== */
+
+    .executive-grid {
+      display: grid;
+      grid-template-columns: 1.45fr 0.75fr;
+      gap: 20px;
+      margin-top: 22px;
+    }
+
+    .headline-panel {
+      padding: 30px;
+      border-radius: 12px;
+      background: var(--navy);
+      color: #fff;
+    }
+
+    .headline-panel .section-label {
+      color: #98a2b3;
+    }
+
+    .headline-panel h2 {
+      max-width: 680px;
+      font-size: 30px;
+      margin-bottom: 17px;
+    }
+
+    .headline-panel p {
+      max-width: 720px;
+      color: #d0d5dd;
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    .headline-bottom {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 20px;
+      margin-top: 25px;
+      padding-top: 19px;
+      border-top: 1px solid rgba(255,255,255,0.13);
+    }
+
+    .headline-bottom-item span {
+      display: block;
+      color: #98a2b3;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 4px;
+    }
+
+    .headline-bottom-item strong {
+      font-size: 14px;
+      font-weight: 650;
+    }
+
+    .score-panel {
+      padding: 28px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: var(--surface-soft);
+    }
+
+    .score-title {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .score {
+      margin: 10px 0 3px;
+      font-size: 64px;
+      line-height: 1;
+      letter-spacing: -0.06em;
+      font-weight: 760;
+    }
+
+    .score-label {
+      color: var(--muted-dark);
+      font-size: 13px;
+    }
+
+    .score-bar {
+      height: 7px;
+      margin: 22px 0 16px;
+      background: #e4e7ec;
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .score-fill {
+      width: 71%;
+      height: 100%;
+      background: var(--green);
+      border-radius: inherit;
+    }
+
+    .score-note {
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.6;
+    }
+
+    /* =========================
+       MONEY CARDS
+    ========================== */
+
+    .money-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-top: 20px;
+    }
+
+    .money-card {
+      padding: 23px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: #fff;
+    }
+
+    .money-card .label {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 650;
+      margin-bottom: 7px;
+    }
+
+    .money-card .value {
+      font-size: 31px;
+      line-height: 1.1;
+      letter-spacing: -0.04em;
+      font-weight: 750;
+    }
+
+    .money-card .description {
+      margin-top: 9px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    .money-card.green {
+      background: var(--green-bg);
+      border-color: var(--green-line);
+    }
+
+    .money-card.green .value {
+      color: var(--green);
+    }
+
+    .money-card.amber {
+      background: var(--amber-bg);
+      border-color: var(--amber-line);
+    }
+
+    .money-card.amber .value {
+      color: var(--amber);
+    }
+
+    .money-card.blue {
+      background: var(--blue-bg);
+      border-color: var(--blue-line);
+    }
+
+    .money-card.blue .value {
+      color: var(--blue);
+    }
+
+    /* =========================
+       EXECUTIVE DECISION
+    ========================== */
+
+    .decision-box {
+      margin-top: 20px;
+      padding: 22px 24px;
+      border-left: 4px solid var(--green);
+      border-radius: 0 10px 10px 0;
+      background: var(--green-bg);
+    }
+
+    .decision-box .decision-label {
+      color: var(--green);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 7px;
+    }
+
+    .decision-box p {
+      color: #174a32;
+      font-size: 15px;
+      line-height: 1.65;
+    }
+
+    /* =========================
+       FOUR DECISIONS
+    ========================== */
+
+    .decision-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      margin-top: 24px;
+    }
+
+    .decision-card {
+      position: relative;
+      overflow: hidden;
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: #fff;
+    }
+
+    .decision-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      width: 4px;
+    }
+
+    .decision-card.stop::before {
+      background: var(--red);
+    }
+
+    .decision-card.fix::before {
+      background: var(--amber);
+    }
+
+    .decision-card.scale::before {
+      background: var(--green);
+    }
+
+    .decision-card.test::before {
+      background: var(--blue);
+    }
+
+    .decision-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
+      margin-bottom: 16px;
+    }
+
+    .decision-tag {
+      display: inline-flex;
+      padding: 5px 8px;
+      border-radius: 6px;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+    }
+
+    .stop .decision-tag {
+      color: var(--red);
+      background: var(--red-bg);
+    }
+
+    .fix .decision-tag {
+      color: var(--amber);
+      background: var(--amber-bg);
+    }
+
+    .scale .decision-tag {
+      color: var(--green);
+      background: var(--green-bg);
+    }
+
+    .test .decision-tag {
+      color: var(--blue);
+      background: var(--blue-bg);
+    }
+
+    .confidence {
+      color: var(--muted);
+      font-size: 11px;
+      white-space: nowrap;
+    }
+
+    .decision-card h3 {
+      font-size: 18px;
+      letter-spacing: -0.02em;
+      margin-bottom: 8px;
+    }
+
+    .decision-card p {
+      color: var(--muted-dark);
+      font-size: 13px;
+      line-height: 1.65;
+    }
+
+    .decision-action {
+      margin-top: 18px;
+      padding-top: 14px;
+      border-top: 1px solid var(--line);
+      color: var(--ink);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    /* =========================
+       MEDIA TABLE
+    ========================== */
+
+    .table-wrap {
+      margin-top: 24px;
+      border: 1px solid var(--line);
+      border-radius: 11px;
+      overflow: hidden;
+    }
+
+    .table-scroll {
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      min-width: 680px;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+
+    thead {
+      background: var(--surface-soft);
+    }
+
+    th {
+      padding: 13px 15px;
+      border-bottom: 1px solid var(--line);
+      color: var(--muted);
+      text-align: left;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 750;
+    }
+
+    td {
+      padding: 15px;
+      border-bottom: 1px solid var(--line);
+      color: var(--muted-dark);
+    }
+
+    tbody tr:last-child td {
+      border-bottom: 0;
+    }
+
+    td:first-child {
+      color: var(--ink);
+      font-weight: 650;
+    }
+
+    .decision-pill {
+      display: inline-flex;
+      padding: 5px 8px;
+      border-radius: 6px;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+    }
+
+    .pill-investigate {
+      color: var(--amber);
+      background: var(--amber-bg);
+    }
+
+    .pill-scale {
+      color: var(--green);
+      background: var(--green-bg);
+    }
+
+    .pill-maintain {
+      color: var(--blue);
+      background: var(--blue-bg);
+    }
+
+    .pill-test {
+      color: var(--red);
+      background: var(--red-bg);
+    }
+
+    /* =========================
+       FUNNEL + ECONOMICS
+    ========================== */
+
+    .insight-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin-top: 23px;
+    }
+
+    .insight-box {
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 11px;
+      background: var(--surface-soft);
+    }
+
+    .insight-box h3 {
+      font-size: 14px;
+      margin-bottom: 15px;
+    }
+
+    .metric-row {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .metric-row:last-child {
+      border-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .metric-row:first-child {
+      padding-top: 0;
+    }
+
+    .metric-name {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .metric-value {
+      color: var(--ink);
+      font-size: 13px;
+      font-weight: 700;
+      text-align: right;
+    }
+
+    .metric-value.warning {
+      color: var(--amber);
+    }
+
+    .metric-value.good {
+      color: var(--green);
+    }
+
+    .implication {
+      margin-top: 22px;
+      padding: 18px 20px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: #fff;
+    }
+
+    .implication strong {
+      display: block;
+      margin-bottom: 5px;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .implication p {
+      color: var(--muted-dark);
+      font-size: 14px;
+      line-height: 1.65;
+    }
+
+    /* =========================
+       ECONOMIC OPPORTUNITY
+    ========================== */
+
+    .financial-layout {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 18px;
+      margin-top: 24px;
+    }
+
+    .financial-callout {
+      padding: 27px;
+      border-radius: 12px;
+      background: var(--navy);
+      color: #fff;
+    }
+
+    .financial-callout .section-label {
+      color: #98a2b3;
+    }
+
+    .financial-callout .big-number {
+      margin: 9px 0 12px;
+      font-size: 48px;
+      line-height: 1;
+      letter-spacing: -0.055em;
+      font-weight: 760;
+    }
+
+    .financial-callout p {
+      color: #d0d5dd;
+      font-size: 13px;
+      line-height: 1.65;
+    }
+
+    .financial-list {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+    }
+
+    .financial-list-row {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 20px;
+      padding: 18px 20px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .financial-list-row:last-child {
+      border-bottom: 0;
+    }
+
+    .financial-list-row .title {
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .financial-list-row .copy {
+      margin-top: 3px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .financial-list-row .amount {
+      font-size: 14px;
+      font-weight: 750;
+      white-space: nowrap;
+    }
+
+    /* =========================
+       ACTION PLAN
+    ========================== */
+
+    .action-list {
+      margin-top: 24px;
+      border-top: 1px solid var(--line);
+    }
+
+    .action-row {
+      display: grid;
+      grid-template-columns: 70px 1fr 150px;
+      gap: 20px;
+      align-items: start;
+      padding: 21px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .action-number {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 750;
+      letter-spacing: 0.05em;
+    }
+
+    .action-row h3 {
+      font-size: 15px;
+      margin-bottom: 4px;
+    }
+
+    .action-row p {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .action-outcome {
+      color: var(--muted-dark);
+      font-size: 11px;
+      font-weight: 700;
+      text-align: right;
+    }
+
+    /* =========================
+       METHODOLOGY
+    ========================== */
+
+    .method-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-top: 24px;
+    }
+
+    .method-card {
+      padding: 21px;
+      border: 1px solid var(--line);
+      border-radius: 11px;
+      background: var(--surface-soft);
+    }
+
+    .method-card .num {
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 750;
+      margin-bottom: 9px;
+    }
+
+    .method-card h3 {
+      font-size: 14px;
+      margin-bottom: 6px;
+    }
+
+    .method-card p {
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.6;
+    }
+
+    .limitations {
+      margin-top: 20px;
+      padding: 18px 20px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: #fafafa;
+    }
+
+    .limitations h3 {
+      margin-bottom: 6px;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+    }
+
+    .limitations p {
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.65;
+    }
+
+    /* =========================
+       FINAL CTA
+    ========================== */
+
+    .final-cta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+      margin: 30px 0 70px;
+      padding: 48px 42px;
+      border-radius: 16px;
+      background: var(--navy);
+      color: #fff;
+    }
+
+    .final-cta .section-label {
+      color: #98a2b3;
+    }
+
+    .final-cta h2 {
+      margin-bottom: 8px;
+      font-size: 32px;
+    }
+
+    .final-cta p {
+      max-width: 670px;
+      color: #d0d5dd;
+      font-size: 14px;
+    }
+
+    .cta-button {
+      flex-shrink: 0;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 18px;
+      border-radius: 9px;
+      background: #fff;
+      color: var(--navy);
+      font-size: 13px;
+      font-weight: 750;
+      white-space: nowrap;
+    }
+
+    .cta-button:hover {
+      opacity: 0.92;
+    }
+
+    /* =========================
+       FOOTER
+    ========================== */
+
+    footer {
+      padding: 25px 0 40px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    .footer-inner {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    /* =========================
+       PRINT
+    ========================== */
+
+    @media print {
+      .topbar {
+        position: static;
+      }
+
+      body {
+        background: #fff;
+      }
+
+      .section-card,
+      .money-card,
+      .decision-card {
+        box-shadow: none;
+      }
+
+      section,
+      .final-cta {
+        break-inside: avoid;
+      }
+    }
+
+    /* =========================
+       TABLET
+    ========================== */
+
+    @media (max-width: 850px) {
+      .executive-grid,
+      .financial-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .money-grid,
+      .method-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .decision-grid,
+      .insight-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .final-cta {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .action-row {
+        grid-template-columns: 50px 1fr;
+      }
+
+      .action-outcome {
+        display: none;
+      }
+    }
+
+    /* =========================
+       MOBILE
+    ========================== */
+
+    @media (max-width: 600px) {
+      .container {
+        width: min(calc(100% - 26px), var(--max));
+      }
+
+      .topbar {
+        height: 60px;
+      }
+
+      .nav-right a:not(.nav-cta) {
+        display: none;
+      }
+
+      .report-header {
+        padding: 46px 0 30px;
+      }
+
+      h1 {
+        font-size: 40px;
+      }
+
+      .header-subtitle {
+        font-size: 16px;
+      }
+
+      .section-inner {
+        padding: 23px;
+      }
+
+      .headline-panel,
+      .score-panel {
+        padding: 23px;
+      }
+
+      .headline-panel h2 {
+        font-size: 25px;
+      }
+
+      .money-card .value {
+        font-size: 28px;
+      }
+
+      .table-wrap {
+        overflow-x: auto;
+      }
+
+      .final-cta {
+        padding: 32px 24px;
+      }
+
+      .final-cta h2 {
+        font-size: 27px;
+      }
+
+      .cta-button {
+        width: 100%;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-<header class="site-header">
-  <a class="brand" href="index.html" aria-label="Metrivio home">
-    <span class="brand-mark">M</span>
-    <span>METRIVIO</span>
-  </a>
+  <!-- =========================
+       NAVIGATION
+  ========================== -->
 
-  <nav aria-label="Primary navigation">
-    <a href="index.html#diagnostic">Diagnostic</a>
-    <a href="index.html#method">Method</a>
-    <a href="index.html#fit">Who it's for</a>
-    <a class="nav-cta" href="index.html#contact">
-      Get your review <span>→</span>
-    </a>
-  </nav>
-</header>
+  <header class="topbar">
+    <div class="container topbar-inner">
 
-<main>
+      <a href="index.html" class="brand">
+        <span class="brand-mark">M</span>
+        <span>METRIVIO</span>
+      </a>
 
-<section class="report-hero">
+      <nav class="nav-right">
+        <a href="index.html">Home</a>
+        <a href="index.html#method">Method</a>
+        <a href="index.html#who">Who it's for</a>
+        <a href="index.html#review" class="nav-cta">Get your review →</a>
+      </nav>
 
-  <div class="eyebrow">
-    MARKETING EFFICIENCY DIAGNOSTIC
-  </div>
+    </div>
+  </header>
 
-  <div class="report-hero-top">
 
-    <div>
-      <h1>Performance &amp; opportunity.</h1>
+  <main>
 
-      <p>
-        An illustrative example of how Metrivio turns marketing data
-        into decisions about what to stop, fix, scale and test.
-      </p>
+    <div class="container">
+
+      <!-- =========================
+           HEADER
+      ========================== -->
+
+      <header class="report-header">
+
+        <div class="eyebrow">
+          <span class="eyebrow-dot"></span>
+          Marketing Efficiency Diagnostic
+        </div>
+
+        <h1>
+          Performance &amp; opportunity.
+        </h1>
+
+        <p class="header-subtitle">
+          An illustrative example of how Metrivio turns marketing data into
+          decisions about what to stop, fix, scale and test.
+        </p>
+
+        <div class="illustrative-banner">
+          <strong>ILLUSTRATIVE EXAMPLE — NOT CLIENT DATA</strong>
+          <span>
+            All company names, figures and findings on this page are hypothetical.
+          </span>
+        </div>
+
+        <div class="report-meta">
+          <span class="meta-pill">Example DTC Brand</span>
+          <span class="meta-pill">Monthly acquisition spend: $150k</span>
+          <span class="meta-pill">Diagnostic period: 90 days</span>
+          <span class="meta-pill">USD</span>
+        </div>
+
+      </header>
+
+
+      <!-- =========================
+           EXECUTIVE SUMMARY
+      ========================== -->
+
+      <section class="section-card">
+
+        <div class="section-inner">
+
+          <div class="section-label">01 / Executive summary</div>
+
+          <div class="executive-grid">
+
+            <div class="headline-panel">
+
+              <div class="section-label">Primary finding</div>
+
+              <h2>
+                The account is generating growth — but allocation can be improved.
+              </h2>
+
+              <p>
+                Performance deterioration is concentrated in a small number of
+                prospecting campaigns. The evidence suggests the issue is not
+                simply media efficiency — funnel conversion and audience quality
+                should also be investigated before making major budget cuts.
+              </p>
+
+              <div class="headline-bottom">
+
+                <div class="headline-bottom-item">
+                  <span>Acquisition spend</span>
+                  <strong>$150k / month</strong>
+                </div>
+
+                <div class="headline-bottom-item">
+                  <span>Diagnostic period</span>
+                  <strong>90 days</strong>
+                </div>
+
+                <div class="headline-bottom-item">
+                  <span>Priority</span>
+                  <strong>Allocation efficiency</strong>
+                </div>
+
+              </div>
+
+            </div>
+
+
+            <div class="score-panel">
+
+              <div class="score-title">
+                Overall efficiency
+              </div>
+
+              <div class="score">71</div>
+
+              <div class="score-label">
+                out of 100
+              </div>
+
+              <div class="score-bar">
+                <div class="score-fill"></div>
+              </div>
+
+              <p class="score-note">
+                Illustrative composite assessment based on media efficiency,
+                funnel conversion and economic signals.
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <div class="money-grid">
+
+            <div class="money-card amber">
+              <div class="label">Potentially inefficient spend</div>
+              <div class="value">$18.4k</div>
+              <div class="description">
+                Spend associated with weaker marginal performance requiring investigation.
+              </div>
+            </div>
+
+            <div class="money-card green">
+              <div class="label">Opportunity identified</div>
+              <div class="value">$12.7k</div>
+              <div class="description">
+                Illustrative value associated with the strongest actionable opportunities.
+              </div>
+            </div>
+
+            <div class="money-card blue">
+              <div class="label">Recommended reallocation</div>
+              <div class="value">$10k</div>
+              <div class="description">
+                Initial amount recommended for controlled reallocation and testing.
+              </div>
+            </div>
+
+          </div>
+
+
+          <div class="decision-box">
+
+            <div class="decision-label">
+              Executive decision
+            </div>
+
+            <p>
+              Do not simply cut prospecting spend. First isolate the deteriorating
+              campaigns, validate landing-page and audience-quality effects, then
+              move a controlled portion of marginal budget toward stronger opportunities.
+            </p>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- =========================
+           FOUR DECISIONS
+      ========================== -->
+
+      <section class="section-card">
+
+        <div class="section-inner">
+
+          <div class="section-label">02 / What we found</div>
+
+          <h2>Four decisions emerge from the analysis.</h2>
+
+          <p class="section-intro">
+            The diagnostic is designed to produce decisions rather than another
+            collection of charts.
+          </p>
+
+
+          <div class="decision-grid">
+
+            <article class="decision-card stop">
+
+              <div class="decision-top">
+                <span class="decision-tag">STOP</span>
+                <span class="confidence">Confidence: HIGH</span>
+              </div>
+
+              <h3>Campaign X</h3>
+
+              <p>
+                Spend increased while conversion efficiency deteriorated.
+                Marginal performance is below the account benchmark.
+              </p>
+
+              <div class="decision-action">
+                Reduce marginal exposure and redirect the budget into controlled tests.
+              </div>
+
+            </article>
+
+
+            <article class="decision-card fix">
+
+              <div class="decision-top">
+                <span class="decision-tag">FIX</span>
+                <span class="confidence">Confidence: MEDIUM</span>
+              </div>
+
+              <h3>Landing Page</h3>
+
+              <p>
+                Ad-to-page messaging is inconsistent with the strongest acquisition
+                audiences, creating potential conversion leakage.
+              </p>
+
+              <div class="decision-action">
+                Align message, offer and landing experience before scaling traffic.
+              </div>
+
+            </article>
+
+
+            <article class="decision-card scale">
+
+              <div class="decision-top">
+                <span class="decision-tag">SCALE</span>
+                <span class="confidence">Confidence: HIGH</span>
+              </div>
+
+              <h3>Campaign Y</h3>
+
+              <p>
+                Strong marginal efficiency and stable conversion performance suggest
+                additional budget can be investigated.
+              </p>
+
+              <div class="decision-action">
+                Increase budget gradually while monitoring marginal performance.
+              </div>
+
+            </article>
+
+
+            <article class="decision-card test">
+
+              <div class="decision-top">
+                <span class="decision-tag">TEST</span>
+                <span class="confidence">Confidence: MEDIUM</span>
+              </div>
+
+              <h3>Creative angles</h3>
+
+              <p>
+                Three new creative hypotheses should be tested against the strongest
+                existing audience and offer combinations.
+              </p>
+
+              <div class="decision-action">
+                Run controlled creative tests before making broad account changes.
+              </div>
+
+            </article>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- =========================
+           MEDIA ANALYSIS
+      ========================== -->
+
+      <section class="section-card">
+
+        <div class="section-inner">
+
+          <div class="section-label">03 / Media analysis</div>
+
+          <h2>Where the acquisition budget is working — and where it isn't.</h2>
+
+          <p class="section-intro">
+            Channel-level efficiency is only the starting point. The diagnostic
+            focuses on marginal performance and the decision each channel supports.
+          </p>
+
+
+          <div class="table-wrap">
+
+            <div class="table-scroll">
+
+              <table>
+
+                <thead>
+                  <tr>
+                    <th>Channel</th>
+                    <th>Spend</th>
+                    <th>CPA</th>
+                    <th>Efficiency</th>
+                    <th>Decision</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+
+                  <tr>
+                    <td>Meta Prospecting</td>
+                    <td>$72k</td>
+                    <td>$64</td>
+                    <td>Below benchmark</td>
+                    <td>
+                      <span class="decision-pill pill-investigate">
+                        INVESTIGATE
+                      </span>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td>Meta Retargeting</td>
+                    <td>$18k</td>
+                    <td>$41</td>
+                    <td>Strong</td>
+                    <td>
+                      <span class="decision-pill pill-scale">
+                        SCALE
+                      </span>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td>Google Search</td>
+                    <td>$38k</td>
+                    <td>$46</td>
+                    <td>Strong</td>
+                    <td>
+                      <span class="decision-pill pill-maintain">
+                        MAINTAIN
+                      </span>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td>Google PMax</td>
+                    <td>$22k</td>
+                    <td>$71</td>
+                    <td>Weakening</td>
+                    <td>
+                      <span class="decision-pill pill-test">
+                        TEST
+                      </span>
+                    </td>
+                  </tr>
+
+                </tbody>
+
+              </table>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- =========================
+           FUNNEL & ECONOMICS
+      ========================== -->
+
+      <section class="section-card">
+
+        <div class="section-inner">
+
+          <div class="section-label">04 / Funnel &amp; economics</div>
+
+          <h2>Media performance is only part of the diagnosis.</h2>
+
+          <p class="section-intro">
+            A channel can look inefficient because of the media itself — or because
+            something downstream is weakening the economics. The diagnostic separates
+            those possibilities before recommending a major budget move.
+          </p>
+
+
+          <div class="insight-grid">
+
+            <div class="insight-box">
+
+              <h3>Funnel signals</h3>
+
+              <div class="metric-row">
+                <span class="metric-name">CTR</span>
+                <span class="metric-value good">Broadly stable</span>
+              </div>
+
+              <div class="metric-row">
+                <span class="metric-name">Landing-page CVR</span>
+                <span class="metric-value warning">Declining</span>
+              </div>
+
+              <div class="metric-row">
+                <span class="metric-name">Checkout CVR</span>
+                <span class="metric-value good">Broadly stable</span>
+              </div>
+
+              <div class="metric-row">
+                <span class="metric-name">AOV</span>
+                <span class="metric-value good">Stable</span>
+              </div>
+
+            </div>
+
+
+            <div class="insight-box">
+
+              <h3>Economic signals</h3>
+
+              <div class="metric-row">
+                <span class="metric-name">CAC</span>
+                <span class="metric-value warning">Increasing</span>
+              </div>
+
+              <div class="metric-row">
+                <span class="metric-name">Payback</span>
+                <span class="metric-value warning">Lengthening</span>
+              </div>
+
+              <div class="metric-row">
+                <span class="metric-name">Marginal efficiency</span>
+                <span class="metric-value good">Stronger in selected campaigns</span>
+              </div>
+
+              <div class="metric-row">
+                <span class="metric-name">Contribution margin</span>
+                <span class="metric-value warning">Under pressure</span>
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <div class="implication">
+
+            <strong>Implication</strong>
+
+            <p>
+              Reallocating spend may create more value than simply increasing total
+              acquisition investment. The strongest opportunity is to improve the
+              quality of the marginal dollar rather than chase more volume.
+            </p>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- =========================
+           ECONOMIC OPPORTUNITY
+      ========================== -->
+
+      <section class="section-card">
+
+        <div class="section-inner">
+
+          <div class="section-label">05 / Economic opportunity</div>
+
+          <h2>Why the allocation decision matters.</h2>
+
+          <p class="section-intro">
+            At $150k of monthly acquisition spend, relatively small changes in
+            marginal efficiency can have meaningful consequences.
+          </p>
+
+
+          <div class="financial-layout">
+
+            <div class="financial-callout">
+
+              <div class="section-label">Illustrative opportunity</div>
+
+              <div class="big-number">$12.7k</div>
+
+              <p>
+                Potential opportunity identified across inefficient marginal spend,
+                funnel leakage and stronger allocation candidates.
+              </p>
+
+            </div>
+
+
+            <div class="financial-list">
+
+              <div class="financial-list-row">
+
+                <div>
+                  <div class="title">Deteriorating prospecting</div>
+                  <div class="copy">
+                    Spend is growing faster than conversion efficiency.
+                  </div>
+                </div>
+
+                <div class="amount">$7.2k</div>
+
+              </div>
+
+
+              <div class="financial-list-row">
+
+                <div>
+                  <div class="title">Landing-page leakage</div>
+                  <div class="copy">
+                    Conversion decline is concentrated in high-spend audiences.
+                  </div>
+                </div>
+
+                <div class="amount">$2.8k</div>
+
+              </div>
+
+
+              <div class="financial-list-row">
+
+                <div>
+                  <div class="title">Under-scaled opportunity</div>
+                  <div class="copy">
+                    Selected campaigns show stronger marginal efficiency.
+                  </div>
+                </div>
+
+                <div class="amount">$1.9k</div>
+
+              </div>
+
+
+              <div class="financial-list-row">
+
+                <div>
+                  <div class="title">Creative test opportunity</div>
+                  <div class="copy">
+                    New hypotheses could improve marginal performance.
+                  </div>
+                </div>
+
+                <div class="amount">$0.8k</div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- =========================
+           ACTION PLAN
+      ========================== -->
+
+      <section class="section-card">
+
+        <div class="section-inner">
+
+          <div class="section-label">06 / 30-day action plan</div>
+
+          <h2>What we'd do next.</h2>
+
+          <p class="section-intro">
+            The objective is not to make every possible change. It is to make a small
+            number of high-confidence changes, then measure what happens.
+          </p>
+
+
+          <div class="action-list">
+
+            <div class="action-row">
+
+              <div class="action-number">01</div>
+
+              <div>
+                <h3>Reallocate</h3>
+                <p>
+                  Move a portion of marginal budget away from deteriorating prospecting
+                  campaigns and into stronger marginal opportunities.
+                </p>
+              </div>
+
+              <div class="action-outcome">
+                Improve marginal efficiency
+              </div>
+
+            </div>
+
+
+            <div class="action-row">
+
+              <div class="action-number">02</div>
+
+              <div>
+                <h3>Investigate</h3>
+                <p>
+                  Validate landing-page conversion, audience quality and post-click
+                  behaviour before making permanent campaign decisions.
+                </p>
+              </div>
+
+              <div class="action-outcome">
+                Confirm root cause
+              </div>
+
+            </div>
+
+
+            <div class="action-row">
+
+              <div class="action-number">03</div>
+
+              <div>
+                <h3>Test</h3>
+                <p>
+                  Launch new creative and offer hypotheses against the strongest
+                  audience combinations.
+                </p>
+              </div>
+
+              <div class="action-outcome">
+                Create new winners
+              </div>
+
+            </div>
+
+
+            <div class="action-row">
+
+              <div class="action-number">04</div>
+
+              <div>
+                <h3>Measure</h3>
+                <p>
+                  Evaluate changes using contribution CAC, conversion efficiency and
+                  marginal performance rather than platform ROAS alone.
+                </p>
+              </div>
+
+              <div class="action-outcome">
+                Validate impact
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- =========================
+           METHODOLOGY
+      ========================== -->
+
+      <section class="section-card" id="method">
+
+        <div class="section-inner">
+
+          <div class="section-label">07 / The Metrivio approach</div>
+
+          <h2>Better marketing decisions start with better diagnosis.</h2>
+
+          <p class="section-intro">
+            Metrivio connects the decisions that are often analysed separately:
+            media allocation, funnel conversion and customer economics.
+          </p>
+
+
+          <div class="method-grid">
+
+            <div class="method-card">
+
+              <div class="num">01 / MEDIA</div>
+
+              <h3>Assess marginal performance</h3>
+
+              <p>
+                Identify where additional spend appears to create value and where
+                performance is deteriorating.
+              </p>
+
+            </div>
+
+
+            <div class="method-card">
+
+              <div class="num">02 / FUNNEL</div>
+
+              <h3>Find downstream leakage</h3>
+
+              <p>
+                Separate media problems from landing-page, audience and conversion
+                issues that may be distorting acquisition performance.
+              </p>
+
+            </div>
+
+
+            <div class="method-card">
+
+              <div class="num">03 / ECONOMICS</div>
+
+              <h3>Connect spend to business value</h3>
+
+              <p>
+                Evaluate CAC, contribution economics, payback and marginal efficiency
+                before recommending a major allocation change.
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <div class="limitations">
+
+            <h3>Important limitation</h3>
+
+            <p>
+              This page is an illustrative example, not a claim about actual client
+              performance. Actual recommendations depend on the quality and availability
+              of the underlying business and marketing data. Where evidence is incomplete,
+              the diagnostic should identify the gap rather than present an assumption as fact.
+            </p>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- =========================
+           FINAL CTA
+      ========================== -->
+
+      <div class="final-cta">
+
+        <div>
+
+          <div class="section-label">
+            The real diagnostic
+          </div>
+
+          <h2>
+            Find out where your next dollar should go.
+          </h2>
+
+          <p>
+            If you're spending $15k+ a month on acquisition and want an independent
+            view of what's working, what's leaking and where the next dollar deserves
+            to go, request a Metrivio review.
+          </p>
+
+        </div>
+
+        <a href="index.html#review" class="cta-button">
+          Request a review →
+        </a>
+
+      </div>
+
     </div>
 
-    <div class="fictional">
-      ILLUSTRATIVE EXAMPLE — NOT CLIENT DATA
+  </main>
+
+
+  <!-- =========================
+       FOOTER
+  ========================== -->
+
+  <footer>
+
+    <div class="container footer-inner">
+
+      <div>
+        Metrivio · Marketing intelligence for profitable growth.
+      </div>
+
+      <div>
+        Illustrative sample · © 2026 Metrivio
+      </div>
+
     </div>
 
-  </div>
-
-  <div class="report-meta">
-    <span>Example DTC Brand</span>
-    <span>Monthly acquisition spend: $150k</span>
-    <span>Diagnostic period: 90 days</span>
-  </div>
-
-</section>
-
-
-<section class="report-section">
-
-  <div class="report-section-head">
-    <div class="eyebrow">EXECUTIVE SUMMARY</div>
-    <h2>The account is generating growth — but allocation can be improved.</h2>
-  </div>
-
-  <div class="report-summary">
-
-    <div>
-      <span>Overall efficiency</span>
-      <strong>71<small>/100</small></strong>
-    </div>
-
-    <div>
-      <span>Potentially inefficient spend</span>
-      <strong>$18.4k</strong>
-    </div>
-
-    <div>
-      <span>Opportunity identified</span>
-      <strong>$12.7k</strong>
-    </div>
-
-    <div>
-      <span>Recommended reallocation</span>
-      <strong>$10k</strong>
-    </div>
-
-  </div>
-
-  <div class="report-callout">
-
-    <strong>Primary finding</strong>
-
-    <p>
-      Performance deterioration is concentrated in a small number of
-      prospecting campaigns. The evidence suggests the issue is not
-      simply media efficiency — funnel conversion and audience quality
-      should also be investigated before making major budget cuts.
-    </p>
-
-  </div>
-
-</section>
-
-
-<section class="report-section report-grey">
-
-  <div class="report-section-head">
-    <div class="eyebrow">WHAT WE FOUND</div>
-    <h2>Four decisions emerge from the analysis.</h2>
-  </div>
-
-  <div class="report-decisions">
-
-    <article>
-      <span class="report-tag stop">STOP</span>
-      <h3>Campaign X</h3>
-      <p>
-        Spend increased while conversion efficiency deteriorated.
-        Marginal performance is below the account benchmark.
-      </p>
-      <small>Confidence: <strong>HIGH</strong></small>
-    </article>
-
-    <article>
-      <span class="report-tag fix">FIX</span>
-      <h3>Landing Page</h3>
-      <p>
-        Ad-to-page messaging is inconsistent with the strongest
-        acquisition audiences, creating potential conversion leakage.
-      </p>
-      <small>Confidence: <strong>MEDIUM</strong></small>
-    </article>
-
-    <article>
-      <span class="report-tag scale">SCALE</span>
-      <h3>Campaign Y</h3>
-      <p>
-        Strong marginal efficiency and stable conversion performance
-        suggest additional budget can be investigated.
-      </p>
-      <small>Confidence: <strong>HIGH</strong></small>
-    </article>
-
-    <article>
-      <span class="report-tag test">TEST</span>
-      <h3>Creative angles</h3>
-      <p>
-        Three new creative hypotheses should be tested against the
-        strongest existing audience and offer combinations.
-      </p>
-      <small>Confidence: <strong>MEDIUM</strong></small>
-    </article>
-
-  </div>
-
-</section>
-
-
-<section class="report-section">
-
-  <div class="report-section-head">
-    <div class="eyebrow">MEDIA ANALYSIS</div>
-    <h2>Where the acquisition budget is working — and where it isn't.</h2>
-  </div>
-
-  <div class="report-table">
-
-    <div class="report-table-head">
-      <span>Channel</span>
-      <span>Spend</span>
-      <span>CPA</span>
-      <span>Efficiency</span>
-      <span>Decision</span>
-    </div>
-
-    <div>
-      <span>Meta Prospecting</span>
-      <span>$72k</span>
-      <span>$64</span>
-      <span>Below benchmark</span>
-      <b>INVESTIGATE</b>
-    </div>
-
-    <div>
-      <span>Meta Retargeting</span>
-      <span>$18k</span>
-      <span>$41</span>
-      <span>Strong</span>
-      <b>SCALE</b>
-    </div>
-
-    <div>
-      <span>Google Search</span>
-      <span>$38k</span>
-      <span>$46</span>
-      <span>Strong</span>
-      <b>MAINTAIN</b>
-    </div>
-
-    <div>
-      <span>Google PMax</span>
-      <span>$22k</span>
-      <span>$71</span>
-      <span>Weakening</span>
-      <b>TEST</b>
-    </div>
-
-  </div>
-
-</section>
-
-
-<section class="report-section report-dark">
-
-  <div class="report-section-head">
-    <div class="eyebrow light">FUNNEL &amp; ECONOMICS</div>
-    <h2>Media performance is only part of the diagnosis.</h2>
-  </div>
-
-  <div class="report-two-column">
-
-    <div>
-      <h3>Funnel signals</h3>
-
-      <p>
-        <strong>CTR:</strong> broadly stable across the period.
-      </p>
-
-      <p>
-        <strong>Landing-page CVR:</strong> declining for the highest
-        spend prospecting audience.
-      </p>
-
-      <p>
-        <strong>Checkout CVR:</strong> broadly stable.
-      </p>
-
-      <p>
-        <strong>AOV:</strong> stable, suggesting the primary issue is
-        more likely acquisition and conversion efficiency than basket size.
-      </p>
-    </div>
-
-    <div>
-      <h3>Economic signals</h3>
-
-      <p>
-        <strong>CAC:</strong> increasing faster than contribution margin
-        can comfortably absorb.
-      </p>
-
-      <p>
-        <strong>Payback:</strong> lengthening as prospecting efficiency declines.
-      </p>
-
-      <p>
-        <strong>Marginal efficiency:</strong> materially stronger in a
-        smaller set of campaigns.
-      </p>
-
-      <p>
-        <strong>Implication:</strong> reallocating spend may create more
-        value than simply increasing total acquisition investment.
-      </p>
-    </div>
-
-  </div>
-
-</section>
-
-
-<section class="report-section">
-
-  <div class="report-section-head">
-    <div class="eyebrow">30-DAY ACTION PLAN</div>
-    <h2>What we'd do next.</h2>
-  </div>
-
-  <div class="report-actions">
-
-    <div>
-      <span>01</span>
-      <strong>Reallocate</strong>
-      <p>
-        Move a portion of marginal budget away from deteriorating
-        prospecting campaigns and into stronger marginal opportunities.
-      </p>
-    </div>
-
-    <div>
-      <span>02</span>
-      <strong>Investigate</strong>
-      <p>
-        Validate landing-page conversion, audience quality and
-        post-click behaviour before making permanent campaign decisions.
-      </p>
-    </div>
-
-    <div>
-      <span>03</span>
-      <strong>Test</strong>
-      <p>
-        Launch new creative and offer hypotheses against the strongest
-        audience combinations.
-      </p>
-    </div>
-
-    <div>
-      <span>04</span>
-      <strong>Measure</strong>
-      <p>
-        Evaluate changes using contribution CAC, conversion efficiency
-        and marginal performance rather than platform ROAS alone.
-      </p>
-    </div>
-
-  </div>
-
-</section>
-
-
-<section class="report-final">
-
-  <div class="eyebrow light">THE METRIVIO APPROACH</div>
-
-  <h2>
-    Better marketing decisions start with
-    better diagnosis.
-  </h2>
-
-  <p>
-    This example shows the level of thinking behind a Metrivio diagnostic.
-    Actual recommendations depend on the quality and availability of the
-    underlying business and marketing data.
-  </p>
-
-  <a class="button button-light" href="index.html#contact">
-    Request a Free Review <span>→</span>
-  </a>
-
-</section>
-
-</main>
-
-<footer>
-
-  <a class="brand" href="index.html">
-    <span class="brand-mark">M</span>
-    <span>METRIVIO</span>
-  </a>
-
-  <span>Marketing intelligence for profitable growth.</span>
-
-  <span>© 2026 Metrivio</span>
-
-</footer>
+  </footer>
 
 </body>
 </html>
