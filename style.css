@@ -426,6 +426,14 @@
     text-align: center;
 }
 
+.hero-solo .eyebrow {
+    text-align: center;
+}
+
+.hero-solo .eyebrow span {
+    display: inline-block;
+}
+
 .hero-solo .hero-copy {
     margin-left: auto;
     margin-right: auto;
@@ -497,5 +505,81 @@
 @media (max-width: 560px) {
     .decision-grid {
         grid-template-columns: 1fr !important;
+    }
+}
+
+.site-header {
+    display: block;
+}
+
+.header-inner {
+    max-width: 1240px;
+    margin: 0 auto;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+@media (min-width: 901px) {
+    .site-header {
+        padding: 0 max(6vw, 28px) !important;
+    }
+}
+
+.fit,
+.faq {
+    display: block;
+    max-width: none;
+}
+
+.fit-inner {
+    max-width: 1240px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+}
+
+.fit > div.fit-inner {
+    max-width: 1240px !important;
+    justify-self: stretch !important;
+}
+
+.fit-inner > div {
+    max-width: 570px;
+}
+
+.fit-inner > div:first-child {
+    justify-self: end;
+}
+
+.faq-inner {
+    max-width: 1240px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: .75fr 1.25fr;
+    gap: 90px;
+}
+
+.faq > div.faq-inner {
+    max-width: 1240px !important;
+}
+
+@media (max-width: 900px) {
+    .fit-inner,
+    .faq-inner {
+        grid-template-columns: 1fr;
+        gap: 45px;
+    }
+
+    .fit-inner > div:first-child {
+        justify-self: auto;
+    }
+}
+
+@media (max-width: 560px) {
+    .faq-inner {
+        gap: 35px;
     }
 }
