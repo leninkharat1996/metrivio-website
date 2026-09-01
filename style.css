@@ -421,7 +421,7 @@
    ========================================= */
 
 .hero-solo {
-    max-width: 780px;
+    max-width: 1020px;
     margin: 0 auto;
     text-align: center;
 }
@@ -582,4 +582,133 @@
     .faq-inner {
         gap: 35px;
     }
+}
+
+@media (min-width: 901px) {
+    section {
+        padding-top: 84px;
+        padding-bottom: 84px;
+    }
+
+    .hero {
+        padding-top: 72px;
+        padding-bottom: 56px;
+    }
+
+    .dark-section {
+        padding-top: 84px;
+        padding-bottom: 84px;
+    }
+
+    .cta-section {
+        padding-top: 88px;
+        padding-bottom: 84px;
+    }
+}
+
+.sample-proof {
+    max-width: 1240px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.05fr .95fr;
+    gap: 70px;
+    align-items: center;
+}
+
+.sample-proof-text h2 {
+    text-align: left;
+}
+
+.sample-proof-text p {
+    color: var(--muted);
+    font-size: 15px;
+    line-height: 1.65;
+    max-width: 480px;
+    margin-top: 16px;
+}
+
+.sample-proof-actions {
+    margin-top: 28px;
+}
+
+.sample-proof-actions .dash-note {
+    margin-top: 14px;
+}
+
+.sample-preview {
+    background: #fff;
+    border: 1px solid var(--line);
+    box-shadow: 0 22px 60px rgba(21, 26, 24, .07);
+    padding: 26px;
+}
+
+.sample-preview-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 16px;
+}
+
+.sample-preview-meta {
+    font-size: 11px;
+    color: #7a847e;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--line);
+}
+
+.sample-preview-rows {
+    padding-top: 6px;
+}
+
+.sample-preview-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 13px 0;
+    border-bottom: 1px solid #edf0ed;
+}
+
+.sample-preview-row:last-child {
+    border-bottom: 0;
+}
+
+.sample-preview-row .tag {
+    font-size: 9px;
+    font-weight: 850;
+    letter-spacing: .12em;
+    padding: 5px 8px;
+    flex-shrink: 0;
+}
+
+.sample-preview-row b {
+    font-size: 13px;
+    font-weight: 650;
+}
+
+@media (max-width: 900px) {
+    .sample-proof {
+        grid-template-columns: 1fr;
+        gap: 36px;
+    }
+}
+
+.fit-columns > div h3 {
+    position: relative;
+    padding-top: 14px;
+}
+
+.fit-columns > div h3::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 28px;
+    height: 3px;
+    background: var(--accent);
+}
+
+.fit-columns > .not-fit h3::before {
+    background: var(--line);
 }
