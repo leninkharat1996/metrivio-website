@@ -1,46 +1,25 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const form = document.getElementById("leadForm");
-  const success = document.getElementById("success");
+const CALENDLY_URL = "YOUR_CALENDLY_URL";
 
-  form.addEventListener("submit", async (event) => {
-  event.preventDefault();
-
-  if (!form.checkValidity()) {
-    form.reportValidity();
+function openCalendly() {
+  if (CALENDLY_URL === "YOUR_CALENDLY_URL") {
+    alert("Calendly is ready to connect. Replace YOUR_CALENDLY_URL in script.js with your booking link.");
     return;
   }
 
-  const button = form.querySelector('button[type="submit"]');
-  const originalText = button.innerHTML;
-
-  button.disabled = true;
-  button.innerHTML = "Sending…";
-
-  try {
-    const response = await fetch(form.action, {
-      method: "POST",
-      body: new FormData(form),
-      headers: {
-        Accept: "application/json"
-      }
-    });
-
-    const result = await response.json();
-
-    if (response.ok && result.success) {
-      form.hidden = true;
-      success.hidden = false;
-      success.scrollIntoView({ behavior: "smooth", block: "center" });
-      form.reset();
-    } else {
-      throw new Error(result.message || "Submission failed");
-    }
-  } catch (error) {
-    alert("Something went wrong. Please try again.");
-    button.disabled = false;
-    button.innerHTML = originalText;
+  if (typeof Calendly !== "undefined" && typeof Calendly.initPopupWidget === "function") {
+    Calendly.initPopupWidget({ url: CALENDLY_URL });
+  } else {
+    window.open(CALENDLY_URL, "_blank", "noopener,noreferrer");
   }
-});
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll(".calendly-trigger").forEach((trigger) => {
+    trigger.addEventListener("click", (event) => {
+      event.preventDefault();
+      openCalendly();
+    });
+  });
 
   document.querySelectorAll('a[href^="#"]').forEach((link) => {
     link.addEventListener("click", () => {
