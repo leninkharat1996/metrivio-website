@@ -1,5 +1,15 @@
 const CALENDLY_URL = "https://calendly.com/lenin-k-metrivio/commercial-hvac-growth-call";
 
+// Metrivio uses a normal Calendly page navigation, not Calendly's popup widget.
+// Remove the widget script if it is still present in the cached HTML so it cannot
+// interfere with the page or create mobile scrolling/freezing issues.
+(function removeCalendlyWidgetScript() {
+  const widgetScripts = document.querySelectorAll(
+    'script[src*="assets.calendly.com/assets/external/widget.js"]'
+  );
+  widgetScripts.forEach((script) => script.remove());
+})();
+
 function openCalendly() {
   if (CALENDLY_URL === "YOUR_CALENDLY_URL") {
     alert("Calendly is ready to connect. Replace YOUR_CALENDLY_URL in script.js with your booking link.");
@@ -7,7 +17,6 @@ function openCalendly() {
   }
 
   // Use a normal browser navigation instead of Calendly's popup widget.
-  // This avoids page-freezing/blocking issues from the third-party widget.
   window.location.assign(CALENDLY_URL);
 }
 
