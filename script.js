@@ -1,4 +1,4 @@
-const CALENDLY_URL = "YOUR_CALENDLY_URL";
+const CALENDLY_URL = "https://calendly.com/lenin-k-metrivio/commercial-hvac-growth-call";
 
 function openCalendly() {
   if (CALENDLY_URL === "YOUR_CALENDLY_URL") {
