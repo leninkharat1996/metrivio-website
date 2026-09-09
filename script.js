@@ -6,11 +6,9 @@ function openCalendly() {
     return;
   }
 
-  if (typeof Calendly !== "undefined" && typeof Calendly.initPopupWidget === "function") {
-    Calendly.initPopupWidget({ url: CALENDLY_URL });
-  } else {
-    window.open(CALENDLY_URL, "_blank", "noopener,noreferrer");
-  }
+  // Use a normal browser navigation instead of Calendly's popup widget.
+  // This avoids page-freezing/blocking issues from the third-party widget.
+  window.location.assign(CALENDLY_URL);
 }
 
 document.addEventListener("DOMContentLoaded", () => {
